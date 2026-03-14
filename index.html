@@ -151,6 +151,81 @@
   ::-webkit-scrollbar-track { background: var(--negro); }
   ::-webkit-scrollbar-thumb { background: var(--gris-borde); border-radius: 2px; }
 
+  /* ── SIDEBAR DRAWER (móvil) ── */
+  .hamburger {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    padding: 0.4rem; margin-left: auto; flex-shrink: 0;
+    color: var(--blanco); font-size: 1.25rem; line-height: 1;
+    border-radius: 5px; transition: background 0.15s;
+  }
+  .hamburger:hover { background: var(--gris-medio); }
+
+  .drawer-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .drawer-overlay.open { opacity: 1; }
+
+  .drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 301;
+    width: min(80vw, 280px);
+    background: var(--gris-oscuro);
+    border-left: 1px solid var(--gris-borde);
+    display: flex; flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    overflow-y: auto;
+  }
+  .drawer.open { transform: translateX(0); }
+
+  .drawer-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1rem 0.75rem;
+    border-bottom: 1px solid var(--gris-borde);
+    flex-shrink: 0;
+  }
+  .drawer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 0.1em; color: var(--verde);
+  }
+  .drawer-close {
+    background: none; border: none; cursor: pointer;
+    color: var(--gris-texto); font-size: 1.1rem; padding: 0.2rem;
+    border-radius: 4px; transition: color 0.15s;
+  }
+  .drawer-close:hover { color: var(--blanco); }
+
+  .drawer-nav {
+    display: flex; flex-direction: column;
+    padding: 0.6rem 0.5rem;
+    gap: 2px;
+    flex: 1;
+  }
+  .drawer-nav button {
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500;
+    color: var(--blanco-dim);
+    padding: 0.75rem 0.85rem;
+    border-radius: 6px;
+    text-align: left;
+    display: flex; align-items: center; gap: 0.6rem;
+    transition: all 0.15s;
+    width: 100%;
+  }
+  .drawer-nav button:hover { background: var(--gris-medio); color: var(--blanco); }
+  .drawer-nav button.active {
+    background: rgba(0,200,81,0.1);
+    color: var(--verde);
+    border-left: 3px solid var(--verde);
+    padding-left: calc(0.85rem - 3px);
+  }
+  .drawer-nav .drawer-icon { font-size: 1rem; flex-shrink: 0; width: 1.4rem; text-align: center; }
+
   /* ── RESPONSIVE ── */
   @media(max-width:900px) {
     .cards { grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); }
@@ -158,23 +233,16 @@
 
   /* ── TABLET ── */
   @media(max-width:680px) {
-    /* Header: logo arriba, nav abajo en scroll horizontal */
+    /* Header: solo logo + hamburguesa */
     header {
-      padding: 0.4rem 0.75rem 0;
-      gap: 0.4rem;
-      height: auto;
-      flex-wrap: wrap;
+      padding: 0 0.75rem;
+      height: 50px;
+      flex-wrap: nowrap;
     }
     .logo { font-size: 1.1rem; }
     .logo-sub, .logo-sep { display: none; }
-    nav {
-      margin-left: 0;
-      width: 100%;
-      order: 2;
-      padding-bottom: 0.35rem;
-      gap: 3px;
-    }
-    nav button { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+    nav { display: none; }
+    .hamburger { display: flex; align-items: center; justify-content: center; }
 
     /* Hero más compacto */
     .hero { padding: 1.8rem 1rem 1.2rem; }
@@ -346,7 +414,36 @@
     <button onclick="show('acta',this)">El Acta</button>
     <button onclick="show('incidentes',this)">Incidentes Graves</button>
   </nav>
+  <button class="hamburger" onclick="openDrawer()" aria-label="Menú">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect y="3" width="20" height="2" rx="1" fill="currentColor"/>
+      <rect y="9" width="20" height="2" rx="1" fill="currentColor"/>
+      <rect y="15" width="20" height="2" rx="1" fill="currentColor"/>
+    </svg>
+  </button>
 </header>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drawer-header">
+    <span class="drawer-title">SECCIONES</span>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <button class="active" onclick="showFromDrawer('resumen',this)"><span class="drawer-icon">📋</span>Resumen General</button>
+    <button onclick="showFromDrawer('f11',this)"><span class="drawer-icon">⚽</span>Fútbol 11</button>
+    <button onclick="showFromDrawer('f7',this)"><span class="drawer-icon">🟢</span>Fútbol 7 / F5</button>
+    <button onclick="showFromDrawer('veteranos',this)"><span class="drawer-icon">🟣</span>Veteranos</button>
+    <button onclick="showFromDrawer('fuera',this)"><span class="drawer-icon">🚩</span>Fuera de Juego</button>
+    <button onclick="showFromDrawer('disciplina',this)"><span class="drawer-icon">🟨</span>Disciplina</button>
+    <button onclick="showFromDrawer('balones',this)"><span class="drawer-icon">🏟️</span>Balones y Campo</button>
+    <button onclick="showFromDrawer('acta',this)"><span class="drawer-icon">📝</span>El Acta</button>
+    <button onclick="showFromDrawer('incidentes',this)"><span class="drawer-icon">🚨</span>Incidentes Graves</button>
+  </nav>
+</div>
 
 <div class="hero">
   <div class="hero-eye">Comité de Árbitros de Madrid</div>
@@ -1037,11 +1134,44 @@
 <script>
   function show(id, btn) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('nav button, .drawer-nav button').forEach(b => b.classList.remove('active'));
     document.getElementById('sec-' + id).classList.add('active');
-    btn.classList.add('active');
+    // marcar activo en nav escritorio y drawer
+    document.querySelectorAll('nav button, .drawer-nav button').forEach(b => {
+      if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + id + "'")) {
+        b.classList.add('active');
+      }
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  function showFromDrawer(id, btn) {
+    show(id, btn);
+    closeDrawer();
+  }
+
+  function openDrawer() {
+    const overlay = document.getElementById('drawerOverlay');
+    const drawer = document.getElementById('drawer');
+    overlay.style.display = 'block';
+    requestAnimationFrame(() => {
+      overlay.classList.add('open');
+      drawer.classList.add('open');
+    });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    const overlay = document.getElementById('drawerOverlay');
+    const drawer = document.getElementById('drawer');
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { overlay.style.display = 'none'; }, 280);
+  }
+
+  // Cerrar drawer con tecla Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 </script>
 </body>
 </html>
