@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guía del Árbitro RFFM 2025/2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Guía del Árbitro CAFM 2025/2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -82,7 +82,25 @@
   .sh { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gris-borde); }
   .sh h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 0.04em; margin-bottom: 0.2rem; }
   .sh p { color: var(--gris-texto); font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; }
-  .tw { overflow-x: auto; margin-bottom: 1.75rem; border-radius: 6px; border: 1px solid var(--gris-borde); }
+  .tw { overflow-x: auto; margin-bottom: 1.75rem; border-radius: 6px; border: 1px solid var(--gris-borde); -webkit-overflow-scrolling: touch; }
+  .tw::after {
+    content: none;
+  }
+  @media(max-width:480px) {
+    .tw { position: relative; }
+    .tw::before {
+      content: '← desliza →';
+      display: block;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.08em;
+      color: var(--gris-texto);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--gris-borde);
+      background: var(--gris-medio);
+    }
+  }
   table { width: 100%; border-collapse: collapse; }
   thead tr { background: var(--gris-medio); }
   th { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris-texto); padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid var(--gris-borde); white-space: nowrap; }
@@ -100,7 +118,7 @@
   .pp { background: rgba(155,143,255,0.12); color: var(--morado); border: 1px solid rgba(155,143,255,0.3); }
   .pgr { background: rgba(255,255,255,0.05); color: var(--blanco-dim); border: 1px solid var(--gris-borde); }
   .alert { border-radius: 6px; padding: 0.8rem 1rem; margin-bottom: 1rem; font-size: 0.78rem; line-height: 1.65; border-left: 3px solid; }
-  .alert strong { display: block; margin-bottom: 0.2rem; font-size: 0.8rem; }
+  .alert strong { display: block; margin-bottom: 0.5rem; font-size: 0.82rem; }
   .ag { background: rgba(0,200,81,0.07); border-color: var(--verde); color: #b0f0c8; }
   .ay { background: rgba(255,214,10,0.07); border-color: var(--amarillo); color: #fff0a0; }
   .ar { background: rgba(255,59,48,0.07); border-color: var(--rojo); color: #ffc0bb; }
@@ -132,19 +150,191 @@
   ::-webkit-scrollbar { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: var(--negro); }
   ::-webkit-scrollbar-thumb { background: var(--gris-borde); border-radius: 2px; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px) {
+    .cards { grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); }
+  }
+
+  /* ── TABLET ── */
   @media(max-width:680px) {
-    .two { grid-template-columns: 1fr; }
-    h1 { font-size: 3rem; }
+    /* Header: logo arriba, nav abajo en scroll horizontal */
+    header {
+      padding: 0.4rem 0.75rem 0;
+      gap: 0.4rem;
+      height: auto;
+      flex-wrap: wrap;
+    }
+    .logo { font-size: 1.1rem; }
+    .logo-sub, .logo-sep { display: none; }
+    nav {
+      margin-left: 0;
+      width: 100%;
+      order: 2;
+      padding-bottom: 0.35rem;
+      gap: 3px;
+    }
     nav button { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+
+    /* Hero más compacto */
+    .hero { padding: 1.8rem 1rem 1.2rem; }
+    .hero::before { width: 100%; }
+    h1 { font-size: clamp(2.4rem, 11vw, 3.2rem); }
+    .hero-desc { font-size: 0.82rem; }
+    .hero-eye { font-size: 0.58rem; }
+
+    /* Page */
+    .page { padding: 0 0.75rem 3rem; }
+
+    /* Grids → columna única */
+    .two { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+
+    /* Section header */
+    .sh h2 { font-size: 1.65rem; }
+    .sh p { font-size: 0.6rem; }
+    .sub { font-size: 1.2rem; margin: 1.3rem 0 0.55rem; }
+
+    /* Alerts y nota-imp */
+    .alert { font-size: 0.76rem; padding: 0.7rem 0.85rem; }
+    .alert strong { font-size: 0.78rem; }
+    .nota-imp { font-size: 0.76rem; padding: 0.8rem 0.9rem; }
+
+    /* Notas */
+    .notas li { font-size: 0.75rem; padding: 0.6rem 0.75rem 0.6rem 1.1rem; }
+
+    /* Cards */
+    .card { padding: 0.9rem; }
+    .card h3 { font-size: 0.82rem; }
+    .card p { font-size: 0.74rem; }
+
+    /* Badges hero */
+    .badges { gap: 0.35rem; }
+    .badge { font-size: 0.58rem; padding: 0.22rem 0.55rem; }
+
+    /* Pills en tablas */
+    .pill { font-size: 0.6rem; padding: 0.12rem 0.38rem; }
+  }
+
+  /* ── MÓVIL ── */
+  @media(max-width:480px) {
+    body { font-size: 13px; }
+
+    /* Header más pegado */
+    header { padding: 0.35rem 0.6rem 0; }
+    .logo { font-size: 1rem; }
+    nav button { font-size: 0.55rem; padding: 0.25rem 0.42rem; letter-spacing: 0.04em; }
+
+    /* Hero muy compacto */
+    .hero { padding: 1.4rem 0.75rem 1rem; }
+    h1 { font-size: clamp(2rem, 13vw, 2.8rem); line-height: 0.92; }
+    .hero-desc { font-size: 0.78rem; margin-bottom: 1rem; }
+    .hero-eye { display: none; }
+
+    /* Page */
+    .page { padding: 0 0.6rem 2.5rem; }
+
+    /* Tablas: scroll horizontal con indicador visual */
+    .tw {
+      -webkit-overflow-scrolling: touch;
+      border-radius: 6px;
+      position: relative;
+    }
+    td { font-size: 0.72rem; padding: 0.42rem 0.55rem; }
+    th { font-size: 0.54rem; padding: 0.5rem 0.55rem; letter-spacing: 0.06em; }
+
+    /* Section header */
+    .sh { margin-bottom: 1rem; padding-bottom: 0.75rem; }
+    .sh h2 { font-size: 1.45rem; }
+    .sub { font-size: 1.1rem; margin: 1.1rem 0 0.5rem; }
+
+    /* Alerts */
+    .alert { font-size: 0.73rem; padding: 0.65rem 0.75rem; line-height: 1.6; }
+    .alert strong { font-size: 0.75rem; margin-bottom: 0.35rem; }
+
+    /* Nota importante */
+    .nota-imp { font-size: 0.73rem; padding: 0.75rem 0.85rem; line-height: 1.65; }
+    .nota-imp strong { font-size: 0.76rem; }
+
+    /* Notas */
+    .notas { gap: 0.45rem; }
+    .notas li { font-size: 0.73rem; padding: 0.55rem 0.65rem 0.55rem 1rem; line-height: 1.55; }
+    .notas li::before { font-size: 0.62rem; top: 0.68rem; left: 0.5rem; }
+
+    /* Cards */
+    .card { padding: 0.8rem 0.85rem; border-radius: 7px; }
+    .card h3 { font-size: 0.8rem; margin-bottom: 0.25rem; }
+    .card p { font-size: 0.72rem; line-height: 1.6; }
+    .ci { font-size: 1.15rem; margin-bottom: 0.4rem; }
+
+    /* Pills más pequeñas */
+    .pill { font-size: 0.58rem; padding: 0.1rem 0.32rem; }
+
+    /* Badges */
+    .badge { font-size: 0.56rem; padding: 0.2rem 0.5rem; }
+
+    /* Aviso rojo alineaciones */
+    div[style*="border: 2px solid var(--rojo)"] { padding: 0.85rem 0.9rem !important; gap: 0.65rem !important; }
+    div[style*="border: 2px solid var(--rojo)"] > div:first-child { font-size: 1.3rem !important; }
+    div[style*="border: 2px solid var(--rojo)"] > div:last-child > div:first-child { font-size: 0.95rem !important; }
+    div[style*="border: 2px solid var(--rojo)"] > div:last-child > div:last-child { font-size: 0.73rem !important; }
+  }
+
+  /* ── MÓVIL MUY PEQUEÑO ── */
+  @media(max-width:360px) {
+    header { padding: 0.3rem 0.5rem 0; }
+    .logo { font-size: 0.95rem; }
+    nav button { font-size: 0.5rem; padding: 0.22rem 0.35rem; }
+    h1 { font-size: 1.9rem; }
+    .page { padding: 0 0.5rem 2rem; }
+    td { font-size: 0.68rem; padding: 0.38rem 0.45rem; }
+    th { font-size: 0.5rem; }
   }
 </style>
 </head>
 <body>
 
+<!-- BANNER NO OFICIAL -->
+<div id="disclaimer" style="
+  position: relative;
+  background: linear-gradient(135deg, #1c1200 0%, #141000 100%);
+  border-bottom: 1px solid rgba(255,214,10,0.3);
+  padding: 1rem 3.5rem 1rem 1.5rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+">
+  <!-- Icono -->
+  <div style="
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    background: rgba(255,214,10,0.12);
+    border: 1px solid rgba(255,214,10,0.35);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; margin-top: 0.05rem;
+  ">⚠️</div>
+  <!-- Texto -->
+  <div>
+    <div style="font-family:'DM Sans',sans-serif; font-weight:700; font-size:0.82rem; color:#FFD60A; letter-spacing:0.03em; margin-bottom:0.25rem;">
+      Documento de uso interno — No oficial
+    </div>
+    <div style="font-family:'DM Sans',sans-serif; font-size:0.75rem; color:rgba(255,240,160,0.75); line-height:1.6;">
+      Este material ha sido elaborado por miembros del <strong style="color:rgba(255,240,160,0.95)">Comité de Árbitros de Fútbol de Madrid (CAFM)</strong> como guía de apoyo para compañeros del comité. <strong style="color:rgba(255,240,160,0.95)">No sustituye en ningún caso la normativa oficial de la RFFM.</strong> Ante cualquier duda o discrepancia, prevalece siempre el texto oficial publicado por la Federación.
+    </div>
+  </div>
+  <!-- Botón cerrar -->
+  <button onclick="this.parentElement.style.display='none'" style="
+    position: absolute; top: 0.65rem; right: 0.9rem;
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,214,10,0.5); font-size: 1rem; line-height: 1;
+    padding: 0.2rem; border-radius: 4px;
+    transition: color 0.15s;
+  " onmouseover="this.style.color='rgba(255,214,10,0.9)'" onmouseout="this.style.color='rgba(255,214,10,0.5)'" title="Cerrar aviso">✕</button>
+</div>
+
 <header>
-  <div class="logo">RFFM</div>
+  <div class="logo">CAFM</div>
   <div class="logo-sep"></div>
-  <div class="logo-sub">Guía del Árbitro · Temporada 2025/2026</div>
+  <div class="logo-sub">Guía CAFM · Temporada 2025/2026</div>
   <nav>
     <button class="active" onclick="show('resumen',this)">Resumen</button>
     <button onclick="show('f11',this)">Fútbol 11</button>
@@ -153,14 +343,15 @@
     <button onclick="show('fuera',this)">Fuera de Juego</button>
     <button onclick="show('disciplina',this)">Disciplina</button>
     <button onclick="show('balones',this)">Balones y Campo</button>
-    <button onclick="show('normas',this)">Normas Generales</button>
+    <button onclick="show('acta',this)">El Acta</button>
+    <button onclick="show('incidentes',this)">Incidentes Graves</button>
   </nav>
 </header>
 
 <div class="hero">
-  <div class="hero-eye">Real Federación de Fútbol de Madrid</div>
-  <h1>GUÍA<br><span class="acc">ÁRBITRO</span></h1>
-  <p class="hero-desc">Referencia oficial para árbitros basada en las Normas de Competición aprobadas el 10 de julio de 2025.</p>
+  <div class="hero-eye">Comité de Árbitros de Madrid</div>
+  <h1>GUÍA<br><span class="acc">CAFM</span></h1>
+  <p class="hero-desc">Material de apoyo interno para árbitros del CAFM, basado en las Normas de Competición de la RFFM aprobadas el 10 de julio de 2025. Documento no oficial.</p>
   <div class="badges">
     <span class="badge bg">✓ Temporada 2025/2026</span>
     <span class="badge by">⚡ Aprobado 10 Jul 2025</span>
@@ -210,7 +401,18 @@
 
   <div class="nota-imp">
     <strong>* Benjamín, Prebenjamín y Debutante — Sin tarjetas por reglas de juego, pero SÍ hay disciplina</strong>
-    No se muestran tarjetas por infracciones. Sin embargo, el árbitro SÍ puede expulsar por acción disciplinaria (sin mostrar tarjeta). Para faltas de gravedad superior a lo normal: <strong>expulsión temporal de 2 minutos</strong>. Por reincidencia o conducta violenta/injuriosa grave: <strong>expulsión definitiva</strong>. En Benjamín Femenino, el ganador de <strong>cada cuarto se anota independientemente</strong> de los goles totales del partido.
+    No se muestran tarjetas por infracciones. Sin embargo, el árbitro SÍ puede expulsar por acción disciplinaria (sin mostrar tarjeta).
+    <ul style="list-style:none; margin: 0.6rem 0 0.6rem 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem;">
+      <li style="padding-left: 1rem; position: relative;">
+        <span style="position:absolute; left:0; color:var(--amarillo);">•</span>
+        Para faltas de gravedad superior a lo normal: <strong>expulsión temporal de 2 minutos.</strong>
+      </li>
+      <li style="padding-left: 1rem; position: relative;">
+        <span style="position:absolute; left:0; color:var(--amarillo);">•</span>
+        Por reincidencia o conducta violenta/injuriosa grave: <strong>expulsión definitiva.</strong>
+      </li>
+    </ul>
+    En Benjamín Femenino, el ganador de <strong>cada cuarto se anota independientemente</strong> de los goles totales del partido.
   </div>
 
   <div class="sub">🟣 Veteranos</div>
@@ -258,6 +460,47 @@
   <div class="alert ab">
     <strong>Árbitros asistentes — Cuando sea posible</strong>
     1ª División Autonómica de Aficionados (M y F) · Preferente de Aficionados masculino · 1ª División Autonómica de Juveniles · Superliga Cadete.
+  </div>
+
+  <div class="sub">Tiros libres — Normas de ejecución</div>
+  <ul class="notas">
+    <li>El balón debe estar <strong>inmóvil</strong>. Estará en juego en cuanto se golpee con el pie y se mueva con claridad. El ejecutor no puede tocarlo por segunda vez hasta que lo haga otro jugador.</li>
+    <li>Los adversarios deben respetar una distancia de <strong>9,15 m</strong>. Si un rival intercepta un saque rápido estando a menos distancia, el árbitro puede dejar que el juego continúe; si lo obstaculiza deliberadamente, es amonestable.</li>
+    <li>Si un atacante se sitúa a <strong>menos de 1 m de la barrera</strong> defensiva (de 3 o más jugadores), se concede libre indirecto al equipo defensor.</li>
+    <li>Tiro libre dentro del área penal propia: el balón está en juego en cuanto sale del área. Los rivales deben estar fuera hasta entonces; si entran antes de que el balón salga, <strong>se repite el tiro</strong>.</li>
+    <li><strong>Ventaja:</strong> si el árbitro aplica ventaja tras una infracción merecedora de tarjeta, la muestra en cuanto el balón deje de estar en juego. Si la ventaja se concede para evitar una ocasión manifiesta de gol y finalmente no se materializa, el jugador es amonestado igualmente.</li>
+  </ul>
+
+  <div class="sub">El Penalti — Procedimiento completo</div>
+  <div class="cards">
+    <div class="card"><span class="ci">🎯</span><h3>Posición previa al golpeo</h3><p>El guardameta debe estar sobre la línea de meta entre los dos postes, <strong>de frente al lanzador</strong>, con al menos parte de un pie en contacto con la línea. No puede distraer al ejecutor de forma antirreglamentaria. El resto de jugadores: fuera del área y a mínimo 9,15 m del punto de penalti, detrás del balón.</p></div>
+    <div class="card"><span class="ci">⚡</span><h3>Adelantamientos</h3><p>Si <strong>un defensor se adelanta</strong> y el balón entra: gol válido. Si no entra: se repite. Si <strong>un atacante se adelanta</strong> y el balón entra: se repite. Si no entra: libre indirecto. Si se adelantan <strong>ambos</strong> y entra: se repite. El árbitro solo sanciona el adelantamiento de un compañero del portero si influye claramente en el lanzador.</p></div>
+    <div class="card"><span class="ci">🔁</span><h3>Infracciones del portero</h3><p>Si el portero comete infracción (se mueve antes del golpeo) y el balón <strong>no entra</strong>: se repite con advertencia; si reincide, se le amonesta. Si el balón <strong>entra</strong>: gol válido (no se repite, salvo que la infracción influya en el lanzador).</p></div>
+    <div class="card"><span class="ci">🚫</span><h3>Tras el lanzamiento</h3><p>Si el ejecutor toca el balón dos veces: libre indirecto (o directo si es infracción por mano). Si el balón rebota en el poste o el portero y el lanzador lo toca antes que nadie: <strong>libre indirecto</strong>. Si toca a un agente externo en movimiento: se repite.</p></div>
+  </div>
+
+  <div class="sub">Saques — Normas clave IFAB</div>
+  <div class="cards">
+    <div class="card"><span class="ci">🥅</span><h3>Saque de meta</h3><p>Desde cualquier punto del área de meta. <strong>SÍ puede marcarse gol directo</strong> contra el adversario. Si entra en la portería propia directamente: saque de esquina al rival. Los adversarios deben estar fuera del área hasta que el balón esté en juego; si entran antes, <strong>se repite el saque</strong>.</p></div>
+    <div class="card"><span class="ci">🚩</span><h3>Saque de banda</h3><p>Ambos pies en la línea o fuera, lanzamiento con ambas manos desde atrás y por encima de la cabeza. <strong>No puede marcarse gol directo.</strong> Adversarios a mínimo 2 m; estar más cerca es amonestable. Si el ejecutor toca el balón dos veces: libre indirecto (o directo si infracción por mano). Si el saque entra en la portería rival: saque de meta. Si entra en la propia: saque de esquina.</p></div>
+    <div class="card"><span class="ci">⚽</span><h3>Saque de esquina</h3><p>Balón en el cuadrante de esquina más cercano. <strong>SÍ puede marcarse gol directamente</strong> (solo contra el adversario; si entra en la propia portería: esquina al rival). Adversarios a mínimo 9,15 m. Si el ejecutor golpea deliberadamente el balón contra un rival para jugarlo de nuevo sin imprudencia, el árbitro deja continuar el juego.</p></div>
+    <div class="card"><span class="ci">📢</span><h3>Saque inicial</h3><p>Adversarios a mínimo 9,15 m. <strong>SÍ puede marcarse gol directo</strong> contra el rival. Si entra en la portería propia: saque de esquina al adversario. Si el lanzador toca el balón dos veces: libre indirecto. Tras marcar un gol, saca el equipo que encajó.</p></div>
+  </div>
+
+  <div class="sub">Conducta incorrecta — Referencia rápida</div>
+  <div class="two">
+    <div class="card">
+      <h3>🟨 Amonestación (tarjeta amarilla)</h3>
+      <p style="margin-top:0.5rem; font-size:0.77rem; color:var(--blanco-dim); line-height:1.65">
+      Retrasar la reanudación del juego · Entrar/salir sin permiso del árbitro · Conducta antideportiva · Protestar con palabras o acciones · Infringir reiteradamente las Reglas · Quitarse la camiseta o cubrirse la cabeza con ella · Celebración exagerada alejándose del campo · Pedir tarjeta con gestos.<br><br>
+      <strong>Retrasar el juego incluye:</strong> amagar un saque de banda y ceder el balón · lanzar el balón lejos · dilatar la salida al ser sustituido · ejecutar un libre desde el lugar incorrecto para forzar su repetición.</p>
+    </div>
+    <div class="card">
+      <h3>🟥 Expulsión (tarjeta roja)</h3>
+      <p style="margin-top:0.5rem; font-size:0.77rem; color:var(--blanco-dim); line-height:1.65">
+      Juego brusco grave · Conducta violenta · Escupir o morder · Infracción por mano para evitar un gol o una ocasión manifiesta (aunque el árbitro señale penalti) · Evitar una ocasión manifiesta de gol con una falta sancionada con libre directo (fuera del área) · Lenguaje o gestos ofensivos, insultantes o humillantes · Segunda amonestación en el mismo partido.<br><br>
+      <strong>Importante:</strong> si se concede penalti por infracción con intención de jugar el balón y se evita una ocasión manifiesta de gol, es <span style="color:#4dff8a">amarilla</span>, no roja. Si la infracción es agarrar, empujar, etc. sin intención de jugar el balón: <span style="color:#ff8080">roja</span>.</p>
+    </div>
   </div>
 
   <div class="sub">Edades y balones — Fútbol 11</div>
@@ -308,17 +551,59 @@
   <div class="cards">
     <div class="card"><span class="ci">👥</span><h3>Inicio del partido</h3><p>Cada equipo puede comenzar con <strong>mínimo 5 jugadores</strong>. Los restantes pueden incorporarse hasta el <strong>final del descanso</strong> (cuando el árbitro sale al terreno). No se pueden incorporar nuevos jugadores en la segunda parte.</p></div>
     <div class="card"><span class="ci">🔄</span><h3>Sustituciones libres</h3><p>Sin límite de sustituciones ni de interrupciones. Los jugadores sustituidos <strong>SÍ pueden volver</strong> cuantas veces sea necesario, siempre por la zona habilitada (línea media) con autorización del árbitro o delegado arbitral.</p></div>
-    <div class="card"><span class="ci">📢</span><h3>Saque inicial — Gol inválido</h3><p>No es válido el gol conseguido de <strong class="d">saque directo de centro</strong>. Tras marcarse un gol, el saque lo realiza el equipo que encajó.</p></div>
-    <div class="card"><span class="ci">🥅</span><h3>Saque de meta</h3><p>Balón en cualquier punto del área de meta. <strong class="d">NO es válido el gol de saque de meta directo.</strong> En Debutante y Prebenjamín, el saque puede realizarse desde cualquier punto del área de penalti.</p></div>
-    <div class="card"><span class="ci">🚩</span><h3>Saque de banda</h3><p>Con manos, por encima de la cabeza, frente al campo, un pie sobre o al exterior de la línea. <strong class="d">No puede marcarse gol directamente de saque de banda.</strong></p></div>
-    <div class="card"><span class="ci">📐</span><h3>Tiros libres — Campo propio</h3><p>Desde campo propio, <strong>TODOS los tiros libres son INDIRECTOS</strong> sin excepción. No puede marcarse gol directo desde el propio campo.</p></div>
-    <div class="card"><span class="ci">⚽</span><h3>Saque de esquina</h3><p><strong>SÍ puede anotarse gol directamente</strong> de saque de esquina. Los rivales a mínimo 6 m. El lanzador no puede volver a jugar el balón hasta que lo toque otro.</p></div>
-    <div class="card"><span class="ci">🎯</span><h3>Penalti</h3><p>Desde el punto de penalti (9 m de la línea de meta). Todos excepto lanzador y portero fuera de la zona de 13 m. El portero debe tener al menos un pie en la línea de meta al momento del lanzamiento.</p></div>
+    <div class="card"><span class="ci">📢</span><h3>Saque inicial — Gol inválido</h3><p>No es válido el gol conseguido de <strong class="d">saque directo de centro</strong>. Tras marcarse un gol, el saque lo realiza el equipo que encajó. El balón debe moverse con claridad para estar en juego; el lanzador no puede tocarlo por segunda vez hasta que lo haya jugado otro.</p></div>
+    <div class="card"><span class="ci">🥅</span><h3>Saque de meta</h3><p>Balón en cualquier punto del área de meta. <strong class="d">NO es válido el gol de saque de meta directo</strong> en la propia portería (se concede esquina al rival). En Debutante y Prebenjamín, el saque puede realizarse desde cualquier punto del área de penalti. Los adversarios deben estar fuera del área hasta que el balón esté en juego; si entran antes, se repite el saque.</p></div>
+    <div class="card"><span class="ci">🚩</span><h3>Saque de banda</h3><p>Con ambas manos, desde atrás y por encima de la cabeza, de pie frente al campo, con ambos pies sobre o fuera de la línea. <strong class="d">No puede marcarse gol directamente.</strong> Los adversarios no pueden situarse a menos de 2 m del lanzador; hacerlo es amonestable. Si el ejecutor toca el balón dos veces seguidas, se concede libre indirecto.</p></div>
+    <div class="card"><span class="ci">📐</span><h3>Tiros libres — Campo propio</h3><p>Desde campo propio, <strong>TODOS los tiros libres son INDIRECTOS</strong> sin excepción. El árbitro indica el libre indirecto con el brazo alzado hasta que el balón toque a otro jugador o salga del juego. Los rivales deben respetar la distancia de 6 m; si interceptan un saque rápido, el árbitro puede permitir que el juego continúe.</p></div>
+    <div class="card"><span class="ci">⚽</span><h3>Saque de esquina</h3><p><strong>SÍ puede anotarse gol directamente</strong> de saque de esquina (solo contra el adversario; si entra en la propia portería, se concede esquina al rival). Los rivales a mínimo 6 m. El lanzador no puede volver a jugar el balón hasta que lo toque otro. Si golpea el balón intencionadamente contra un rival para jugarlo de nuevo sin imprudencia, el árbitro permite que siga el juego.</p></div>
+    <div class="card"><span class="ci">🎯</span><h3>Penalti</h3><p>Desde el punto de penalti (9 m de la línea de meta). Todos excepto lanzador y portero deben estar fuera de la zona de 13 m. El portero debe tener al menos un pie en contacto con la línea de meta en el momento del golpeo; puede moverse a lo largo de ella. El balón está en juego en cuanto se golpea y se mueve con claridad. El lanzador no puede tocar el balón de nuevo hasta que lo haga otro jugador.</p></div>
   </div>
 
   <div class="alert ar">
     <strong>🚫 Alevín F7 — Prohibición terminante</strong>
     Está totalmente prohibido alinear futbolistas con licencia de Fútbol 11 en equipos del mismo club que participen en la modalidad de Fútbol 7. Es una infracción grave que el árbitro debe reflejar si la detecta.
+  </div>
+
+  <hr>
+
+  <div class="sh" style="margin-top:1.5rem"><h2 style="color:var(--amarillo)">Fútbol 5 — Debutante</h2><p>Categoría Debutantes · Fútbol 5 Formativo · Temporada 2025/2026 · Nacidos/as 2020–2021</p></div>
+
+  <div class="alert ay">
+    <strong>⭐ Espíritu de la categoría</strong>
+    Entorno <strong>educativo, participativo y no competitivo</strong>. No hay clasificaciones ni resultados oficiales, ni registros de goleadores ni porteros.<br><br>
+    Los goles son simbólicos y solo válidos si el equipo celebra unido (abrazo colectivo). No hay vencedores ni vencidos a efectos de clasificación.
+  </div>
+
+  <div class="sub">Formato de juego — Debutante F5</div>
+  <div class="tw"><table>
+    <thead><tr><th>Aspecto</th><th>Regla</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Modalidad</td><td>Fútbol 5 con portero fijo</td></tr>
+      <tr><td class="s">Edades</td><td>Nacidos/as entre 01/01/2020 y 31/12/2021</td></tr>
+      <tr><td class="s">Jugadores en campo</td><td>5 por equipo. Con acuerdo mutuo, puede jugarse con 6 por equipo</td></tr>
+      <tr><td class="s">Duración</td><td>2×15 minutos · Descanso máximo 5 minutos</td></tr>
+      <tr><td class="s">Superficie</td><td>35–25 m de largo · 18–24 m de ancho</td></tr>
+      <tr><td class="s">Balón</td><td>Talla 3 · Balón oficial RFFM (obligatorio)</td></tr>
+      <tr><td class="s">Formato alternativo</td><td>Puede desarrollarse en dos mini-campos simultáneos para maximizar participación y equilibrio</td></tr>
+      <tr><td class="s">Calendario</td><td>Fijado por la RFFM · Viernes, sábados o domingos</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sub">Normas de juego específicas — Debutante F5</div>
+  <div class="cards">
+    <div class="card rf5"><span class="ci">🚫</span><h3>Sin fuera de juego</h3><p>No existe el fuera de juego en ninguna situación. Tampoco hay cesión al portero.</p></div>
+    <div class="card rf5"><span class="ci">🥅</span><h3>Saque de meta</h3><p>Desde el suelo o de volea, con o sin bote, desde la línea de área. Los rivales deben estar <strong>en su mitad del campo</strong>.</p></div>
+    <div class="card rf5"><span class="ci">⚡</span><h3>Faltas directas</h3><p>Solo es válido el gol de falta directa si se lanza <strong>desde campo rival</strong>. Desde campo propio, el tiro libre es indirecto.</p></div>
+    <div class="card rf5"><span class="ci">🚩</span><h3>Saque de banda</h3><p>Si el saque es incorrecto, <strong>se repite sin sanción</strong>. Enfoque pedagógico: aprender sin penalización.</p></div>
+    <div class="card rf5"><span class="ci">🤝</span><h3>Gol simbólico</h3><p>Solo es válido si <strong>todo el equipo celebra unido</strong> (abrazo/cocelebración colectiva). Sin este requisito, el gol no computa.</p></div>
+    <div class="card rf5"><span class="ci">⚖️</span><h3>Aglomeraciones</h3><p>Ante aglomeraciones, <strong>balón a tierra</strong> para el equipo que tenía la posesión.</p></div>
+    <div class="card rf5"><span class="ci">🏃</span><h3>Entrenadores en campo</h3><p>Los entrenadores pueden entrar en el terreno <strong>en cualquier momento sin detener el juego</strong> para realizar correcciones técnico-tácticas.</p></div>
+    <div class="card rf5"><span class="ci">⚖️</span><h3>Equilibrio de equipos</h3><p>A partir de <strong>3 goles de diferencia</strong>, es obligatorio añadir un jugador más al equipo que va perdiendo. El Coordinador puede aplicar otras medidas de equilibrio antes.</p></div>
+  </div>
+
+  <div class="alert ag">
+    <strong>🎓 Arbitraje pedagógico</strong>
+    Los árbitros son designados por la RFFM con enfoque formativo: pueden explicar sus decisiones brevemente para favorecer el aprendizaje. El Coordinador de Campo supervisa y puede intervenir para preservar el clima educativo.
   </div>
 </div>
 
@@ -391,10 +676,12 @@
 
   <div class="sub">Reglas de Fuera de Juego en Fútbol 7</div>
   <div class="cards">
-    <div class="card"><span class="ci">📍</span><h3>Condición</h3><p>El jugador debe estar <strong>dentro de la línea de 13 metros</strong> del adversario Y más cerca de la línea de meta contraria que el balón, salvo que haya <strong>al menos 2 adversarios</strong> entre él y la línea de meta.</p></div>
-    <div class="card"><span class="ci">⚡</span><h3>Cuándo se sanciona</h3><p>Solo si en el momento en que toca el balón o lo juega un compañero, el árbitro considera que está <strong>interfiriendo el juego o sacando ventaja</strong> de esa posición.</p></div>
-    <div class="card"><span class="ci">↩️</span><h3>Viene de posición ilegal</h3><p>Un jugador puede ser sancionado aunque no esté en F.J. en ese momento, si <strong>vino de esa posición y se aprovecha de ello</strong> para sacar ventaja.</p></div>
-    <div class="card"><span class="ci">✅</span><h3>NO es F.J. cuando...</h3><p>El jugador recibe de un <strong>saque de meta</strong>, de un <strong>saque de banda</strong> o de un <strong>bote neutral</strong>. En estas situaciones no puede haber fuera de juego.</p></div>
+    <div class="card"><span class="ci">📍</span><h3>Condición</h3><p>El jugador debe estar <strong>dentro de la línea de 13 metros</strong> del adversario Y más cerca de la línea de meta contraria que el balón, salvo que haya <strong>al menos 2 adversarios</strong> entre él y la línea de meta. Se tienen en cuenta cabeza, tronco y piernas; <strong>no se consideran manos ni brazos</strong>.</p></div>
+    <div class="card"><span class="ci">⚡</span><h3>Cuándo se sanciona</h3><p>Solo si en el momento en que toca el balón o lo juega un compañero, el árbitro considera que está <strong>interfiriendo el juego, obstruyendo claramente el campo visual de un adversario, disputándole el balón</strong> o sacando ventaja de esa posición.</p></div>
+    <div class="card"><span class="ci">↩️</span><h3>Viene de posición ilegal</h3><p>Un jugador puede ser sancionado aunque no esté en F.J. en ese momento, si <strong>vino de esa posición y se aprovecha de ello</strong> para sacar ventaja, por ejemplo cuando el balón rebota en un poste, travesaño, árbitro o adversario.</p></div>
+    <div class="card"><span class="ci">✅</span><h3>NO es F.J. cuando...</h3><p>El jugador recibe de un <strong>saque de meta</strong>, de un <strong>saque de banda</strong> o de un <strong>balón a tierra</strong>. En estas situaciones no puede haber fuera de juego.</p></div>
+    <div class="card"><span class="ci">🚩</span><h3>Sanción</h3><p>Tiro libre <strong>indirecto</strong> desde el lugar donde se encontraba el jugador en posición de fuera de juego, incluso si ese lugar está en su propio campo. Si un defensor abandona el campo sin permiso, se le considera en línea de meta o de banda a efectos del fuera de juego.</p></div>
+    <div class="card"><span class="ci">🤝</span><h3>«Salvada» del defensor</h3><p>Si un defensor realiza una acción para detener o desviar el balón que va hacia portería, <strong>no anula la posición de fuera de juego</strong> del atacante que se beneficia del rebote. Solo un pase deliberado de un adversario sí la anula.</p></div>
   </div>
 
   <div class="alert ay">
@@ -427,9 +714,17 @@
 
   <div class="nota-imp">
     <strong>Categorías sin tarjetas — Cómo actuar como árbitro</strong>
-    En Benjamín, Prebenjamín y Debutante NO se muestran tarjetas por infracciones al reglamento. Sin embargo, el árbitro SÍ puede:<br>
-    • <strong>Expulsar temporalmente (1 ó 2 minutos)</strong> por conducta incorrecta leve.<br>
-    • <strong>Expulsar definitivamente</strong> por reincidencia o conducta violenta, injuriosa o juego brusco grave (sin mostrar tarjeta).<br>
+    En Benjamín, Prebenjamín y Debutante NO se muestran tarjetas por infracciones al reglamento. Sin embargo, el árbitro SÍ puede:
+    <ul style="list-style:none; margin: 0.6rem 0 0.6rem 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem;">
+      <li style="padding-left: 1rem; position: relative;">
+        <span style="position:absolute; left:0; color:var(--amarillo);">•</span>
+        <strong>Expulsar temporalmente (2 minutos)</strong> por conducta incorrecta grave.
+      </li>
+      <li style="padding-left: 1rem; position: relative;">
+        <span style="position:absolute; left:0; color:var(--amarillo);">•</span>
+        <strong>Expulsar definitivamente</strong> por reincidencia o conducta violenta, injuriosa o juego brusco grave (sin mostrar tarjeta).
+      </li>
+    </ul>
     En ambos casos, se comunica el nombre del jugador al Órgano Disciplinario competente en los plazos reglamentarios.
   </div>
 
@@ -455,27 +750,13 @@
   <ul class="notas">
     <li>Máximo <strong>15 personas</strong>: 7 futbolistas suplentes + máx. 8 oficiales.</li>
     <li>Obligatorio: al menos <strong>1 Entrenador Titular (ET)</strong> o en Prácticas (EPR) + <strong>1 Delegado (D)</strong> con licencia o autorización RFFM. El resto puede ser: AT, EP, M, PF, ATS, FTP, EM, CTC. +1 plaza adicional para titular de Licencia de Mentor (LM).</li>
-    <li><strong class="d">Prohibido fumar en el banquillo</strong> durante el partido. El árbitro amonestar al infractor, independientemente de su cargo.</li>
+    <li><strong class="d">Prohibido fumar en el banquillo</strong> durante el partido. El árbitro amonestará al infractor, independientemente de su cargo.</li>
     <li>Los delegados entregan licencias al árbitro <strong>mínimo 25 minutos antes</strong> del inicio: titulares, suplentes y personas del banquillo.</li>
     <li>En <strong>Fútbol 7</strong>: el equipo debe llegar al campo con antelación <strong>mínima de 30 minutos</strong>. En el resto: <strong>45 minutos</strong>.</li>
     <li>Si <strong>no hay ningún oficial con ficha</strong> presente, el partido no puede celebrarse y debe ser suspendido. No vale DNI ni documento sustitutivo.</li>
     <li>Si no hay delegado, puede hacer sus veces el capitán <strong>solo si tiene más de 16 años</strong>. Un capitán menor de 16 años NO puede actuar de delegado.</li>
   </ul>
 
-  <div class="sub">Faltas en Fútbol 7 — Tiro libre directo vs. indirecto</div>
-  <div class="two">
-    <div class="card">
-      <h3>🟡 Tiro libre DIRECTO (desde campo contrario)</h3>
-      <p style="margin-top:0.5rem; font-size:0.77rem; color:var(--blanco-dim); line-height:1.65">Dar o intentar dar una patada · Poner zancadilla · Saltar sobre adversario · Cargar violenta o peligrosamente · Golpear o intentarlo · Sujetar o empujar · Jugar con la mano (salvo portero en su área).<br><br>
-      <strong>Las mismas faltas dentro del área → PENALTI</strong><br><br>
-      <span class="d">⚠ Desde campo propio: tiro libre directo NO puede marcar gol directo (se ejecuta como indirecto).</span></p>
-    </div>
-    <div class="card">
-      <h3>⚪ Tiro libre INDIRECTO</h3>
-      <p style="margin-top:0.5rem; font-size:0.77rem; color:var(--blanco-dim); line-height:1.65">Juego peligroso · Obstaculizar avance · Impedir al portero sacar con manos · Portero controla, juega y vuelve a coger con manos · Portero recibe pase de pie de compañero · Portero recibe de saque de banda · Cualquier otra infracción que motiva amonestación o expulsión.<br><br>
-      <strong>En campo propio, TODOS los tiros libres son indirectos sin excepción.</strong></p>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════ BALONES Y CAMPO ══════════════════════ -->
@@ -491,105 +772,267 @@
     </tbody>
   </table></div>
 
-  <div class="alert ar"><strong>✗ Sanción por no usar balón oficial KROMEX</strong>Aficionados: 50 € / partido · Resto: 30 € / partido. Reincidencia: sanción equiparable a incomparecencia según categoría.</div>
-
-  <div class="sub">Dimensiones del Campo — Fútbol 7</div>
-  <div class="tw"><table>
-    <thead><tr><th>Elemento</th><th>Medida</th></tr></thead>
-    <tbody>
-      <tr><td class="s">Longitud</td><td>40 – 60 m (o igual al ancho de un campo F11)</td></tr>
-      <tr><td class="s">Anchura</td><td>30 – 40 m (longitud siempre mayor que anchura)</td></tr>
-      <tr><td class="s">Ancho de líneas</td><td>8 cm</td></tr>
-      <tr><td class="s">Radio círculo central</td><td>6 m</td></tr>
-      <tr><td class="s">Portería — ancho interior</td><td>6 m entre postes</td></tr>
-      <tr><td class="s">Portería — alto del larguero</td><td>2 m del suelo</td></tr>
-      <tr><td class="s">Diámetro de postes y larguero</td><td>8 cm</td></tr>
-      <tr><td class="s">Área de meta</td><td>3 m desde cada poste · 4,30 m de profundidad</td></tr>
-      <tr><td class="s">Área de penalti</td><td>9 m desde cada poste · 11 m de profundidad</td></tr>
-      <tr><td class="s">Punto de penalti</td><td>9 m de la línea de meta</td></tr>
-      <tr><td class="s">Zona de fuera de juego</td><td>Línea paralela a 13 m de cada línea de meta</td></tr>
-      <tr><td class="s">Arco de esquina</td><td>Radio 60 cm</td></tr>
-      <tr><td class="s">Distancia mínima rivales (tiro libre / saque inicial / esquina)</td><td>6 m</td></tr>
-      <tr><td class="s">Distancia rivales en penalti</td><td>Fuera de la zona de 13 m (salvo portero y lanzador)</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="sub">Calzado en Hierba Artificial</div>
-  <ul class="notas">
-    <li><strong>Válidos:</strong> Tacos tipo AG · MF · MG · TF · TURF o similares (altura menor de 1 cm · mínimo 4 tacos en los talones).</li>
-    <li><strong class="d">No válidos:</strong> FG y SG (hierba natural) · HG (tierra/superficies duras) · Taco de aluminio o similar.</li>
-  </ul>
-
-  <div class="alert ab"><strong>Gafas y lentes correctoras</strong>Solo se permite su uso con autorización escrita de la RFFM, previa presentación al árbitro antes del inicio. Para protecciones blandas, basta con informe médico presentado al árbitro.</div>
+  <div class="alert ar"><strong>⚠ Gafas y lentes correctoras — Obligatorio verificar antes del inicio</strong>
+  Solo se permite su uso con <strong>autorización escrita de la RFFM</strong>, previa presentación al árbitro antes del inicio del partido. Para protecciones blandas, basta con presentar al árbitro un informe médico detallando la naturaleza de la misma. Si el jugador no puede acreditar la autorización, <strong>no puede jugar con las gafas</strong>.</div>
 </div>
 
-<!-- ══════════════════════ NORMAS GENERALES ══════════════════════ -->
-<div class="section" id="sec-normas">
-  <div class="sh"><h2>Normas Generales</h2><p>Jornada · Horarios · Árbitro · Puntuación · Uniformidad</p></div>
+<!-- ══════════════════════ EL ACTA ══════════════════════ -->
+<div class="section" id="sec-acta">
+  <div class="sh"><h2>El Acta</h2><p>Redacción · Contenido obligatorio · Alineaciones · Sanciones · Incidencias · Cierre · Anexo · Plazos</p></div>
 
-  <div class="sub">Sistema de Puntuación</div>
-  <div class="cards" style="grid-template-columns:repeat(3,1fr); max-width:480px">
-    <div class="card" style="text-align:center"><span class="ci">🏆</span><h3 style="font-size:1.8rem; color:var(--verde)">3 pts</h3><p>Victoria</p></div>
-    <div class="card" style="text-align:center"><span class="ci">🤝</span><h3 style="font-size:1.8rem; color:var(--amarillo)">1 pt</h3><p>Empate</p></div>
-    <div class="card" style="text-align:center"><span class="ci">❌</span><h3 style="font-size:1.8rem; color:var(--gris-texto)">0 pts</h3><p>Derrota</p></div>
+  <div style="background:rgba(255,59,48,0.12);border:2px solid var(--rojo);border-radius:8px;padding:1.1rem 1.2rem;margin-bottom:1.2rem;display:flex;gap:1rem;align-items:flex-start;">
+    <div style="font-size:1.6rem;flex-shrink:0;margin-top:0.1rem;">🚨</div>
+    <div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:0.06em;color:var(--rojo);margin-bottom:0.45rem;">OBLIGATORIO ANTES DE INICIAR EL PARTIDO: VERIFICAR ALINEACIONES CARGADAS</div>
+      <div style="font-size:0.82rem;color:#ffc0bb;line-height:1.7;">
+        <strong style="color:#fff;font-size:0.85rem;">ES INDISPENSABLE Y OBLIGATORIO comprobar que AMBOS equipos tienen la alineación subida en la plataforma antes de dar inicio al partido.</strong><br>
+        <strong style="color:var(--rojo);">NINGÚN PARTIDO PUEDE COMENZAR SIN QUE LAS ALINEACIONES ESTÉN CARGADAS.</strong><br>
+        Pulsa <strong style="color:#fff;">"Obtener alineación"</strong> y revísala con los delegados de ambos equipos. Si un equipo no puede subirla, debe entregar las licencias físicas o un listado de participantes para introducirlos manualmente — siempre antes del pitido inicial.
+      </div>
+    </div>
   </div>
 
-  <div class="sub">Horarios oficiales 2025/2026</div>
+  <div class="alert ab">
+    <strong>El acta es el documento oficial del partido — Su correcta cumplimentación es obligatoria</strong>
+    Todo lo que ocurra durante el partido y no quede reflejado en el acta es muy difícil de acreditar posteriormente ante el Comité de Competición y Disciplina.
+  </div>
+
+  <div class="sub">Principios de redacción</div>
+  <div class="alert ab">
+    <strong>El acta es un documento oficial — redáctala de forma clara, precisa, objetiva y sin faltas de ortografía</strong>
+    Describe los hechos sin calificarlos ni emitir juicios de valor. Quien leerá el acta (Comité de Competición) no estuvo presente. Redactar con falta de objetividad o faltando a la verdad puede conllevar sanción según el Artículo 50 del Código Disciplinario y Competicional de la RFFM.
+  </div>
+
+  <div class="sub">Contenido obligatorio del acta</div>
+  <ul class="notas">
+    <li><strong>Fecha y lugar:</strong> campo, equipos participantes, categoría y hora de inicio del 1.º y 2.º tiempo. Si un tiempo no empieza a la hora prevista, modificar la hora y detallar el motivo en "Otras incidencias".</li>
+    <li><strong>Integrantes del partido:</strong> jugadores titulares y suplentes con sus dorsales, oficiales del banquillo (Entrenador, Auxiliar, Delegado de Campo, Delegados de los clubes…) y árbitros asistentes. Verificar que el reconocimiento médico esté en vigor (aparece en rojo si caducó). Sin reconocimiento médico en vigor, el jugador u oficial <strong>no puede participar</strong>, salvo autorización expresa de la RFFM.</li>
+    <li><strong>Resultado final</strong> con mención de los goles (jugador que marca, tipo de gol —normal, penalti, propia puerta— y minuto). Se registra en la pestaña "Otros datos" → "Goles".</li>
+    <li><strong>Sustituciones</strong> (excepto en categorías de sustituciones libres): jugador que sale, jugador que entra y minuto. Si el cambio es en el descanso, se anota el primer minuto de la 2.ª parte.</li>
+    <li><strong>Sanciones disciplinarias:</strong> todas las amonestaciones y expulsiones, indicando nombre, equipo, dorsal, minuto y motivo. Las amonestaciones se reflejan siempre, aunque no conlleven expulsión. Si la expulsión es por doble amarilla, se introducen las dos amonestaciones y el sistema genera la expulsión automáticamente.</li>
+    <li><strong>Otros incidentes:</strong> cualquier hecho relevante antes, durante o después del partido (jugadores, técnicos, público, instalaciones). Se consigna en "Otros datos" → "Incidencias".</li>
+    <li><strong>Firma del árbitro</strong> al finalizar. Los delegados de ambos equipos firman mediante código numérico. Si un delegado no puede o no quiere firmar, se selecciona "Delegado no firma" especificando el motivo.</li>
+  </ul>
+
+  <div class="sub">Alineaciones — Cómo cargarlas</div>
+  <ul class="notas">
+    <li>Los equipos suben la alineación a través de su Intranet. El árbitro pulsa <strong>"Obtener alineación"</strong> y la revisa con los delegados. <strong>Sin alineación cargada, el partido no debe comenzar.</strong></li>
+    <li>Si un equipo no puede subirla, entrega las licencias físicas o un listado de participantes para introducirlos manualmente, siempre antes del inicio.</li>
+    <li>En partidos amistosos con acta en plataforma, los equipos no pueden cargar alineación y deben entregar listado o licencias obligatoriamente.</li>
+    <li>Para partidos de <strong>Alevín, Infantil y Cadete</strong> (sustituciones libres): al finalizar el partido, ir a "Participantes" (en "Otros datos") y marcar qué jugadores suplentes participaron finalmente.</li>
+  </ul>
+
+  <div class="sub">Verificación de oficiales e identidad</div>
+  <ul class="notas">
+    <li>Los oficiales del banquillo (Entrenadores, Delegados, Auxiliares…) deben identificarse antes del partido. El árbitro contrasta la fotografía de la aplicación con la persona presente.</li>
+    <li>Ante dudas razonables, solicitar DNI, permiso de conducir o pasaporte antes del inicio.</li>
+    <li>Siempre que se presente licencia de Entrenador, <strong>el entrenador debe personarse en el vestuario arbitral antes del comienzo del partido</strong> para verificar su identidad.</li>
+    <li>Si un oficial no figura en el acta o no coincide con la persona presente, reflejar la incidencia en "Dirigentes y técnicos".</li>
+    <li>No se permite la duplicidad de licencias en la RFFM, excepto las de Entrenador Auxiliar y Delegado (este último, solo para el equipo local: uno como delegado de equipo y otro como delegado de campo).</li>
+    <li>Cada equipo debe presentar <strong>al menos un entrenador, CTC o EPR</strong>. Si no se presenta ninguno, reflejarlo en acta como "No presenta entrenador, CTC ni EPR". <strong>Nunca se suspende el partido por este motivo.</strong></li>
+  </ul>
+
+  <div class="sub">Delegado — Casos sin licencia de delegado</div>
+  <ul class="notas">
+    <li>Cualquier oficial con licencia en vigor del mismo club puede ejercer de delegado (Auxiliar, Entrenador, CTC, Preparador Físico…). Dejar el campo de delegado con "OTRO OFICIAL ACTÚA COMO DELEGADO". <strong>No es necesario reflejar incidencia en el acta.</strong></li>
+    <li>El Capitán del equipo puede ejercer de delegado <strong>si tiene más de 16 años</strong>. El campo del delegado queda como "NO PRESENTA DELEGADO". Tampoco hay que consignarlo como incidencia.</li>
+    <li>Si el partido es de menores de 16 años y <strong>ningún oficial con licencia en vigor acompaña al equipo</strong>, el partido debe ser suspendido. Reflejar en "Suspensión del partido": <em>"El partido fue suspendido al no disponer el C.D. X de ningún oficial con licencia en vigor que pueda desempeñar su labor y ser su capitán menor de 16 años."</em></li>
+  </ul>
+
+  <div class="sub">Sanciones disciplinarias — Cómo tipificarlas</div>
+  <div class="alert ay">
+    <strong>⚠ Solo se pueden usar los motivos del desplegable de la plataforma</strong>
+    Si hay que ampliar o personalizar la información, se selecciona el motivo más cercano y se edita el texto. Para situaciones no tipificadas, usar el comodín "AM – Otros" / "EX – Otros" y sustituir todo el texto por el motivo real.
+  </div>
   <div class="tw"><table>
-    <thead><tr><th>Categoría</th><th>Sábados</th><th>Domingos</th><th>Observación</th></tr></thead>
+    <thead><tr><th>Código</th><th>Motivo de amonestación (AM)</th></tr></thead>
     <tbody>
-      <tr><td class="s">Aficionado Masculino F11</td><td>—</td><td>09:00 – 21:00 h</td><td>Si visitante &gt;25 km, programar desde 10:00 h</td></tr>
-      <tr><td class="s">Aficionado Femenino F11 y F7</td><td>14:15 – 20:30 h (no festivos)</td><td>09:00 – 21:00 h</td><td>Sábado festivo: mismo horario que domingo</td></tr>
-      <tr><td class="s">Juvenil Masculino</td><td>14:15 – 21:00 h (no festivos)</td><td>09:00 – 21:00 h</td><td>Liga Nacional Juvenil gr.12: desde 16:00 h sáb.</td></tr>
-      <tr><td class="s">Juvenil Femenino</td><td>09:00 – 21:00 h</td><td>09:00 – 21:00 h</td><td>Si visitante &gt;25 km, desde 10:00 h</td></tr>
-      <tr><td class="s">Cadete · Infantil · Alevín F11 · Alevín F7</td><td>09:00 – 20:00 h</td><td>09:00 – 20:00 h</td><td>Cadete: se permite hasta 20:30 h</td></tr>
-      <tr><td class="s">Benjamín · Prebenjamín · Debutante</td><td colspan="2" style="text-align:center">Formato Sede — Fija el Subcomité de Fútbol Formativo</td><td>Viernes tarde – Domingo 20:00 h</td></tr>
+      <tr><td class="s">AM</td><td>Jugar de forma peligrosa</td></tr>
+      <tr><td class="s">AM</td><td>Jugar de forma temeraria</td></tr>
+      <tr><td class="s">AM</td><td>Salir del terreno de juego sin autorización arbitral</td></tr>
+      <tr><td class="s">AM</td><td>Penetrar al terreno de juego sin autorización arbitral</td></tr>
+      <tr><td class="s">AM</td><td>Formular observaciones en disconformidad con una decisión arbitral</td></tr>
+      <tr><td class="s">AM</td><td>Realizar gestos en señal de disconformidad con una decisión arbitral</td></tr>
+      <tr><td class="s">AM</td><td>Cometer un acto de desconsideración</td></tr>
+      <tr><td class="s">AM</td><td>Desatender las instrucciones del árbitro</td></tr>
+      <tr><td class="s">AM</td><td>Pérdida de tiempo</td></tr>
+      <tr><td class="s">AM</td><td>Cometer una falta de orden técnico</td></tr>
+      <tr><td class="s">AM</td><td>Quitarse la camiseta en la celebración de un gol</td></tr>
+      <tr><td class="s">AM</td><td>Discutir con un contrario sin llegar al insulto ni a la amenaza</td></tr>
+      <tr><td class="s">AM</td><td>Encararse con un contrario sin llegar al insulto ni a la amenaza</td></tr>
+      <tr><td class="s">AM</td><td>Infringir las Reglas de Juego (tentativa dentro del área) evitando ocasión manifiesta de gol</td></tr>
+      <tr><td class="s">AM</td><td>Otros — sustituir por el motivo concreto no tipificado</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tw"><table>
+    <thead><tr><th>Código</th><th>Motivo de expulsión (EX)</th></tr></thead>
+    <tbody>
+      <tr><td class="s">EX</td><td>Infringir las Reglas de Juego impidiendo una ocasión manifiesta de gol</td></tr>
+      <tr><td class="s">EX</td><td>Otros — sustituir por el motivo concreto de la expulsión</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="notas">
+    <li>Las tarjetas se clasifican por momento: <strong>Juego</strong> (requiere minuto), <strong>Inicio</strong>, <strong>Descanso</strong> o <strong>Final</strong> (sin minuto). El orden en el resumen es cronológico: Inicio → min. 1-45 → Descanso → min. 46-90 → Final.</li>
+    <li>Si hay expulsión <strong>antes del inicio</strong>, el jugador puede ser reemplazado por un suplente (no cuenta como sustitución). Modificar primero la alineación y luego registrar la expulsión.</li>
+    <li>En expulsiones por <strong>insultos o amenazas</strong>: reproducir literalmente y entre comillas lo dicho, sin omitir nada.</li>
+    <li>En expulsiones por <strong>juego brusco grave</strong>: indicar uso de fuerza excesiva, tipo de acción, si el balón estaba en disputa, si el jugador necesitó asistencia, si se adjunta parte médico y si pudo continuar o fue sustituido. <strong>Nunca escribir solo "por ser culpable de juego brusco y grave".</strong></li>
+    <li>En expulsiones por <strong>conducta violenta</strong>: indicar uso de fuerza excesiva, tipo de golpe (puñetazo, patada, codazo…), si el balón estaba en juego, si se adjunta parte médico y si pudo continuar. <strong>Nunca escribir solo "por ser culpable de conducta violenta".</strong></li>
+    <li>En peleas o conflictos multitudinarios: identificar a cada infractor individualmente. Si no es posible identificarlos, indicarlo en el acta.</li>
+  </ul>
+
+  <div class="sub">Otras incidencias — Qué y cómo documentar</div>
+  <div class="tw">
+    <div class="card">
+      <span class="ci">👥</span>
+      <h3>Incidencias de jugadores</h3>
+      <p>Reemplazos previos al inicio (lesión en calentamiento — no es sustitución) · Lesiones durante el partido (zona afectada, si hay parte médico) · Incidentes tras expulsión · Hechos tras finalizar el partido · Peleas multitudinarias · Revisión de fichas · Mostrar mensajes en camisetas interiores.</p>
+    </div>
+    <div class="card">
+      <span class="ci">🧑‍💼</span>
+      <h3>Incidencias de dirigentes y técnicos</h3>
+      <p>No presentación de licencias · Incidentes tras expulsión de un oficial · Hechos al finalizar el partido · Incumplimiento de funciones (p. ej., delegado que no acompaña al árbitro) · Llegada tardía del entrenador.</p>
+    </div>
+    <div class="card">
+      <span class="ci">📢</span>
+      <h3>Incidencias de público</h3>
+      <p>Lanzamiento de objetos: tipo, cantidad, si impactaron, si causaron daño, minuto, tiempo de parada, cómo se resolvió · Invasión de campo: minuto, número de personas, club identificado si es posible, intenciones, duración de parada · Si no se puede identificar el club, especificarlo.</p>
+    </div>
+    <div class="card">
+      <span class="ci">🏟️</span>
+      <h3>Deficiencias en instalaciones</h3>
+      <p>Porterías, banderines de esquina, líneas de demarcación, banquillos · Vestuarios, duchas, agua caliente · Siempre reflejar que el Delegado de Campo tuvo conocimiento y sus alegaciones. Indicar si se subsanó o no.</p>
+    </div>
+  </div>
+  <ul class="notas">
+    <li><strong>Balón no oficial:</strong> si no se usa el Balón Oficial Kromex, indicar la marca usada y el motivo. <strong>Nunca se suspende el partido por este motivo.</strong></li>
+    <li><strong>Retrasos al inicio:</strong> consignar cuánto tiempo y el motivo en "Otras incidencias". El plazo de cortesía es de <strong>15 minutos</strong> (ampliable o reducible según circunstancias). El árbitro siempre debe hacer el máximo esfuerzo para que el partido se celebre.</li>
+    <li><strong>Revisión de fichas:</strong> solo puede solicitarla el delegado del equipo contrario. Momentos válidos: antes del partido (titulares), en el descanso (jugadores del 1.er tiempo), al finalizar (jugadores del 2.º tiempo salidos del banquillo). En sustituciones libres: en cualquier momento. Toda revisión debe constar en el acta aunque no haya reclamación efectiva. <strong>El partido no puede suspenderse por causa de revisión de fichas.</strong></li>
+    <li><strong>Prórrogas y penaltis:</strong> en torneos o eliminatorias de copa, reflejar el resultado de la prórroga y los lanzamientos desde el punto de penalti en "Otras incidencias".</li>
+    <li><strong>Acceso indebido al vestuario arbitral:</strong> consignar quién accedió, su identificación y lo que dijo o hizo.</li>
+  </ul>
+
+  <div class="sub">Cierre del acta</div>
+  <ul class="notas">
+    <li>Al terminar el partido, leer el acta desde "Resumen" a los delegados de ambos equipos y que comprueben que los datos son correctos.</li>
+    <li>Cada delegado introduce su <strong>código numérico</strong> para verificar y cerrar el acta.</li>
+    <li>Si un delegado no quiere o no puede firmar, seleccionar <strong>"Delegado no firma"</strong> e indicar el motivo (ej.: disconformidad con una expulsión, ya abandonó las instalaciones…).</li>
+    <li>En situaciones de fuerza mayor o si hay dudas sobre cómo redactar los hechos, <strong>no cerrar el acta en el campo</strong>. Contactar con el responsable de actas del CAFM en <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="90f1f3e4f1e3f3f1f6fdd0f6f6fdf1f4e2f9f4beffe2f7">[email&#160;protected]</a></strong> o buzón "Actas" de la Intranet, y cerrarla desde casa en un plazo máximo de <strong>24 horas</strong>.</li>
+  </ul>
+
+  <div class="sub">Anexo al acta</div>
+  <ul class="notas">
+    <li>Si circunstancias especiales lo requieren, el árbitro puede redactar un informe ampliatorio o complementario <strong>dentro de las 24 horas siguientes</strong> a la terminación del partido.</li>
+    <li>Acceso: aplicación de actas → "Buscar" partido (estado "Cerradas") → opción "Anexo", o bien Intranet → "Competición" → "Gestión de actas" → "Listado de actas".</li>
+    <li>Casos típicos de anexo: corrección de un error en el marcador o en la autoría de un gol, incidentes que ocurrieron al salir de las instalaciones y que no pudieron reflejarse antes de cerrar el acta.</li>
+  </ul>
+
+  <div class="sub">Plazos de entrega del acta</div>
+  <div class="tw"><table>
+    <thead><tr><th>Situación</th><th>Plazo</th><th>Destinatario</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Partido disputado con normalidad</td><td>Según instrucciones del Comité (vía aplicación telemática RFFM)</td><td>RFFM</td></tr>
+      <tr><td class="s">Partido con incidentes graves</td><td>Informe detallado en los plazos previstos por la RFFM</td><td>Órgano Disciplinario competente</td></tr>
+      <tr><td class="s">Partido suspendido</td><td>Informe inmediato + acta con lo acontecido hasta la suspensión</td><td>Órgano Disciplinario competente</td></tr>
+      <tr><td class="s">Incomparecencia del árbitro designado</td><td>Notificación escrita en las <strong>48 horas siguientes</strong></td><td>RFFM (por los clubes)</td></tr>
+      <tr><td class="s">Anexo al acta</td><td>Máximo <strong>24 horas</strong> tras la finalización del partido</td><td>RFFM</td></tr>
     </tbody>
   </table></div>
 
-  <div class="sub">El Árbitro — Competencias</div>
+  <div class="sub">Alineación indebida — Qué reflejar en el acta</div>
   <ul class="notas">
-    <li>Las competencias del árbitro comienzan al <strong>entrar al terreno de juego</strong> y finalizan al <strong>abandonar las instalaciones</strong>.</li>
-    <li>Puede sancionar durante <strong>suspensiones temporales</strong> y cuando el balón está fuera de juego.</li>
-    <li>Sus <strong>decisiones sobre el juego son definitivas</strong>. Aplica el principio de ventaja cuando el castigo beneficia al infractor.</li>
-    <li>Actúa de <strong>cronometrador</strong> y toma nota de todas las incidencias.</li>
-    <li>En fútbol formativo: <strong>fomenta el espíritu deportivo</strong>; puede explicar sus decisiones a los jugadores/as.</li>
-    <li>Si el árbitro no se presenta: el partido puede disputarse con árbitro acordado de mutuo acuerdo, rellenando un acta firmada por delegados y capitanes de ambos equipos <strong>antes del inicio</strong>. Se entrega a la RFFM en las 48 horas siguientes.</li>
-    <li>Incomparecencia del árbitro: los clubs notifican por escrito a la RFFM <strong>en las 48 horas siguientes</strong> a la suspensión.</li>
+    <li>Si se detecta <strong>antes del inicio</strong>: el árbitro impide la participación del jugador y lo anota. No hay sanción automática de resultado, pero el Comité puede actuar.</li>
+    <li>Si se detecta <strong>durante el partido</strong>: el árbitro lo hace constar en el acta con el nombre del jugador, dorsal, minuto en que se detecta y motivo. El Comité decidirá las consecuencias.</li>
+    <li>Si un equipo queda con <strong>menos del mínimo reglamentario</strong> por expulsión de jugadores indebidamente alineados, se aplican las reglas de suspensión por mínimo de jugadores.</li>
+    <li>El árbitro <strong>no tiene que saber de memoria</strong> todas las normas de alineación; su obligación es reflejarlo en el acta si se le comunica o si es evidente. El Comité resuelve.</li>
+  </ul>
+</div>
+
+<!-- ══════════════════════ INCIDENTES GRAVES ══════════════════════ -->
+<div class="section" id="sec-incidentes">
+  <div class="sh"><h2>Incidentes Graves</h2><p>Protocolo ante agresiones · Invasión de campo · Suspensión · Qué hacer paso a paso</p></div>
+
+  <div class="alert ar">
+    <strong>🚨 Ante cualquier incidente grave: mantén la calma, abandona el terreno si es necesario para tu seguridad y documenta todo en el acta con el máximo detalle posible</strong>
+    Tu informe es la base sobre la que el Órgano Disciplinario tomará decisiones. Cuanto más detallado y objetivo, mejor.
+  </div>
+
+  <div class="sub">Agresión al árbitro</div>
+  <ul class="notas">
+    <li><strong>Suspende el partido de inmediato</strong> si la agresión ocurre durante el juego. Retírate al vestuario con tus árbitros asistentes si los hubiera.</li>
+    <li><strong>No retomes el partido</strong> bajo ninguna circunstancia si has sido agredido o si tu seguridad está en riesgo.</li>
+    <li>Identifica al agresor: <strong>nombre completo, dorsal, equipo y cargo</strong> (si es jugador, técnico, directivo o espectador). Pide ayuda a los delegados de ambos equipos para la identificación si es necesario.</li>
+    <li>Recoge el testimonio de <strong>testigos presenciales</strong>: árbitros asistentes, delegados, otros jugadores. Anota sus nombres.</li>
+    <li>Redacta un <strong>informe detallado</strong> en el acta: descripción exacta de los hechos, hora, lugar exacto dentro del recinto, identidad del agresor y testigos.</li>
+    <li>Presenta el informe al Órgano Disciplinario competente en los <strong>plazos previstos por la RFFM</strong>.</li>
+    <li>Si hay lesiones, acude a recibir atención médica y <strong>guarda el parte médico</strong>: será documentación necesaria para el expediente.</li>
   </ul>
 
-  <div class="sub">Uniformidad</div>
+  <div class="sub">Invasión de campo</div>
   <ul class="notas">
-    <li>Los futbolistas visten el <strong>primer uniforme</strong> indicado en la hoja de inscripción. Dorsales del <strong>1 al 99</strong>.</li>
-    <li>Si los uniformes coinciden: <strong>cambia el equipo visitante</strong>. En campo neutral: el de afiliación federativa más moderna.</li>
-    <li>Excepción para evitar suspensión: puede bastar con cambiar solo las <strong>camisetas</strong>, pudiendo coincidir pantalón y medias (excepto Aficionados, 1ª Div. Aut. Juvenil y Preferente Juvenil).</li>
-    <li><strong>Espinilleras obligatorias</strong> en Aficionados, Juveniles y Cadetes. Recomendadas en el resto.</li>
-    <li>El color de las medias debe ser igual para todos, excepto el portero, que puede tener uniformidad diferente.</li>
+    <li>El árbitro tiene potestad para <strong>detener el juego</strong> ante la intervención de espectadores que perturben el partido.</li>
+    <li>Si la invasión impide la continuación segura del juego: <strong>suspende el partido</strong>, lleva a los jugadores a los vestuarios y espera a que se restablezca el orden.</li>
+    <li>Si el orden se restablece en un tiempo razonable, el partido puede reanudarse. Si no: suspensión definitiva.</li>
+    <li>Anota en el acta: número aproximado de invasores, a qué equipo pertenecían (si es identificable), minuto en que ocurrió, si hubo agresiones o amenazas y si se restableció el orden.</li>
+    <li>La responsabilidad disciplinaria por invasión de campo recae sobre el <strong>club organizador</strong> (equipo local), que es responsable de la seguridad en su campo.</li>
   </ul>
 
-  <div class="sub">Sanciones económicas — Referencia rápida</div>
+  <div class="sub">Suspensión del partido — Tipos y procedimiento</div>
   <div class="tw"><table>
-    <thead><tr><th>Infracción del club</th><th>Categoría</th><th>Sanción</th></tr></thead>
+    <thead><tr><th>Causa de suspensión</th><th>Quién decide</th><th>Qué hacer</th><th>Resultado provisional</th></tr></thead>
     <tbody>
-      <tr><td class="s">Incomparecencia</td><td>1ª Div. Autonómica Aficionados</td><td>500 €</td></tr>
-      <tr><td></td><td>Preferente Aficionados</td><td>250 €</td></tr>
-      <tr><td></td><td>1ª y 2ª Aficionados</td><td>175 €</td></tr>
-      <tr><td></td><td>Resto categorías</td><td>90 €</td></tr>
-      <tr><td class="s">No usar balón oficial</td><td>Aficionados</td><td>50 € / partido</td></tr>
-      <tr><td></td><td>Resto categorías</td><td>30 € / partido</td></tr>
-      <tr><td class="s">Alineación indebida (mala fe)</td><td>1ª Div. Autonómica</td><td>500 €</td></tr>
-      <tr><td></td><td>Preferente</td><td>250 €</td></tr>
-      <tr><td></td><td>Resto categorías</td><td>90 €</td></tr>
-      <tr><td class="s">Tarjeta amarilla (cat. Aficionado y Juvenil)</td><td>M y F</td><td>1 € / tarjeta</td></tr>
+      <tr><td class="s">Menos del mínimo de jugadores (F11: &lt;7 · F7: &lt;4 propios)</td><td>El árbitro</td><td>Suspender, reflejar en acta, comunicar al Comité</td><td>3-0 a favor del rival (salvo marcador más favorable)</td></tr>
+      <tr><td class="s">Agresión al árbitro o a jugadores</td><td>El árbitro</td><td>Suspender, informe detallado, plazos RFFM</td><td>El Comité decide</td></tr>
+      <tr><td class="s">Invasión de campo sin control</td><td>El árbitro</td><td>Suspender, informe detallado</td><td>El Comité decide</td></tr>
+      <tr><td class="s">Condiciones meteorológicas extremas</td><td>El árbitro</td><td>Suspender, reflejar causa en acta</td><td>El Comité decide (posible reanudación)</td></tr>
+      <tr><td class="s">Campo en condiciones no reglamentarias</td><td>El árbitro</td><td>Suspender, detallar el problema en acta</td><td>El Comité decide. Responsabilidad sobre el club local</td></tr>
+      <tr><td class="s">Incomparecencia del equipo (menos del mínimo sin causa justificada)</td><td>El árbitro</td><td>Esperar el tiempo reglamentario, reflejar en acta</td><td>3-0 a favor del equipo presente. Sanción económica al incompareciente</td></tr>
     </tbody>
   </table></div>
+
+  <div class="sub">Conducta incorrecta desde el banquillo</div>
+  <ul class="notas">
+    <li>El árbitro puede <strong>amonestar o expulsar</strong> a cualquier persona del banquillo (entrenadores, delegados, preparadores…) por conducta incorrecta, desde el momento en que entra al terreno de juego.</li>
+    <li>Si se expulsa a un técnico u oficial, <strong>debe abandonar el recinto deportivo</strong>, no solo el banquillo.</li>
+    <li>Si alguien del banquillo fuma durante el partido, el árbitro lo <strong>amonesta</strong>, independientemente de su cargo.</li>
+    <li>Anota en el acta el <strong>nombre, cargo y licencia</strong> de la persona sancionada y el motivo detallado.</li>
+    <li>Si hay personas en el banquillo <strong>sin licencia federativa</strong>, el árbitro puede requerir que abandonen el banquillo. Si se niegan, se hace constar en el acta.</li>
+  </ul>
+
+  <div class="sub">Partido suspendido — Qué poner en el acta</div>
+  <div class="alert ay">
+    <strong>⚠ Una acta bien redactada en una suspensión es fundamental</strong>
+    El Comité de Competición y Disciplina tomará sus decisiones basándose casi exclusivamente en tu informe. Sé objetivo, preciso y cronológico.
+  </div>
+  <ul class="notas">
+    <li><strong>Minuto exacto</strong> en que se produce el incidente y en que se suspende el partido.</li>
+    <li><strong>Resultado en el momento de la suspensión</strong> (goles de cada equipo).</li>
+    <li><strong>Descripción objetiva</strong> de los hechos: qué ocurrió, quién lo protagonizó, cómo evolucionó la situación.</li>
+    <li><strong>Identidad completa</strong> de los implicados: nombre, dorsal o cargo, equipo.</li>
+    <li><strong>Testigos</strong>: nombres de árbitros asistentes, delegados u otras personas que presenciaron los hechos.</li>
+    <li>Si intentaste <strong>reanudar el partido</strong> y no fue posible, indícalo con el motivo.</li>
+    <li>Estado en que <strong>abandonaste el recinto</strong> (si hubo necesidad de escolta policial, si quedaron personas en el campo, etc.).</li>
+  </ul>
+
+  <div class="two">
+    <div class="card">
+      <span class="ci">📞</span>
+      <h3>Contacto RFFM</h3>
+      <p>C/ San Severo, 16 · 28042 Madrid<br>Teléfono: <strong>917 791 610</strong><br>Web: <strong>rffm.es</strong><br>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbadbebfa9a4a78bb9adada6e5aeb8">[email&#160;protected]</a></p>
+    </div>
+    <div class="card">
+      <span class="ci">⏱️</span>
+      <h3>Plazos clave a recordar</h3>
+      <p><strong>25 min antes:</strong> recibir licencias de los equipos.<br><strong>48 h:</strong> entregar acta/informe de suspensión o incidente.<br><strong>48 h:</strong> notificar incomparecencia del árbitro designado.</p>
+    </div>
+  </div>
 </div>
 
 </div><!-- /page -->
 
 <footer style="text-align:center;padding:1.5rem;background:var(--gris-oscuro);border-top:1px solid var(--gris-borde);font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gris-texto);letter-spacing:0.05em;">
-  RFFM · Normas de Competición aprobadas el 10 de julio de 2025 · Temporada 2025/2026 · Uso interno para árbitros
+  CAFM · Material de apoyo interno · Basado en las Normas de Competición de la RFFM aprobadas el 10 de julio de 2025 · Temporada 2025/2026 · <span style="color:rgba(255,214,10,0.6)">Documento NO oficial</span>
 </footer>
+
 
 <script>
   function show(id, btn) {
