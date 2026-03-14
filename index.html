@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía del Árbitro RFFM 2025/2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #00C851;
+    --rojo: #FF3B30;
+    --amarillo: #FFD60A;
+    --azul: #4A9EFF;
+    --morado: #9B8FFF;
+    --negro: #0A0A0A;
+    --gris-oscuro: #111111;
+    --gris-medio: #1A1A1A;
+    --gris-borde: #262626;
+    --gris-texto: #777;
+    --blanco: #F0F0F0;
+    --blanco-dim: #999;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  header {
+    position: sticky; top: 0; z-index: 200;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gris-borde);
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0 1.5rem; height: 54px;
+  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.12em; color: var(--verde); white-space: nowrap; }
+  .logo-sep { width: 1px; height: 24px; background: var(--gris-borde); flex-shrink: 0; }
+  .logo-sub { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: var(--gris-texto); white-space: nowrap; }
+  nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+  nav::-webkit-scrollbar { display: none; }
+  nav button {
+    background: none; border: none; cursor: pointer;
+    font-family: 'DM Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--gris-texto); padding: 0.35rem 0.7rem;
+    border-radius: 4px; white-space: nowrap; transition: all 0.15s;
+  }
+  nav button:hover { color: var(--blanco); background: var(--gris-medio); }
+  nav button.active { color: var(--verde); background: rgba(0,200,81,0.1); }
+  .hero {
+    padding: 4rem 1.5rem 2.5rem;
+    max-width: 860px; margin: 0 auto; text-align: center; position: relative;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 260px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(0,200,81,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eye {
+    font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em;
+    color: var(--verde); text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+  }
+  .hero-eye::before, .hero-eye::after { content: ''; width: 28px; height: 1px; background: rgba(0,200,81,0.4); }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 9vw, 6rem); line-height: 0.9; letter-spacing: 0.04em; margin-bottom: 1.2rem; }
+  h1 .acc { color: var(--verde); }
+  .hero-desc { color: var(--blanco-dim); font-size: 0.88rem; max-width: 440px; margin: 0 auto 1.5rem; line-height: 1.7; }
+  .badges { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+  .badge { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.28rem 0.7rem; border-radius: 20px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.04em; }
+  .bg { background: rgba(0,200,81,0.12); color: var(--verde); border: 1px solid rgba(0,200,81,0.25); }
+  .by { background: rgba(255,214,10,0.1); color: var(--amarillo); border: 1px solid rgba(255,214,10,0.25); }
+  .br { background: rgba(255,59,48,0.1); color: #ff8080; border: 1px solid rgba(255,59,48,0.25); }
+  .page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+  .section { display: none; animation: fu 0.25s ease; }
+  .section.active { display: block; }
+  @keyframes fu { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+  .sh { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gris-borde); }
+  .sh h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 0.04em; margin-bottom: 0.2rem; }
+  .sh p { color: var(--gris-texto); font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.06em; }
+  .tw { overflow-x: auto; margin-bottom: 1.75rem; border-radius: 6px; border: 1px solid var(--gris-borde); }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: var(--gris-medio); }
+  th { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris-texto); padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid var(--gris-borde); white-space: nowrap; }
+  td { padding: 0.55rem 0.85rem; font-size: 0.78rem; border-bottom: 1px solid var(--gris-borde); color: var(--blanco-dim); vertical-align: middle; }
+  tbody tr { background: var(--gris-oscuro); }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: var(--gris-medio); }
+  td.s { color: var(--blanco); font-weight: 600; }
+  td.c { text-align: center; }
+  .pill { display: inline-flex; align-items: center; gap: 0.2rem; padding: 0.16rem 0.5rem; border-radius: 20px; font-size: 0.65rem; font-weight: 600; white-space: nowrap; font-family: 'DM Mono', monospace; }
+  .pg { background: rgba(0,200,81,0.14); color: #4dff8a; border: 1px solid rgba(0,200,81,0.3); }
+  .pr { background: rgba(255,59,48,0.12); color: #ff8080; border: 1px solid rgba(255,59,48,0.3); }
+  .py { background: rgba(255,214,10,0.12); color: var(--amarillo); border: 1px solid rgba(255,214,10,0.3); }
+  .pb { background: rgba(74,158,255,0.12); color: var(--azul); border: 1px solid rgba(74,158,255,0.3); }
+  .pp { background: rgba(155,143,255,0.12); color: var(--morado); border: 1px solid rgba(155,143,255,0.3); }
+  .pgr { background: rgba(255,255,255,0.05); color: var(--blanco-dim); border: 1px solid var(--gris-borde); }
+  .alert { border-radius: 6px; padding: 0.8rem 1rem; margin-bottom: 1rem; font-size: 0.78rem; line-height: 1.65; border-left: 3px solid; }
+  .alert strong { display: block; margin-bottom: 0.2rem; font-size: 0.8rem; }
+  .ag { background: rgba(0,200,81,0.07); border-color: var(--verde); color: #b0f0c8; }
+  .ay { background: rgba(255,214,10,0.07); border-color: var(--amarillo); color: #fff0a0; }
+  .ar { background: rgba(255,59,48,0.07); border-color: var(--rojo); color: #ffc0bb; }
+  .ab { background: rgba(74,158,255,0.07); border-color: var(--azul); color: #b0d8ff; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(245px,1fr)); gap: 0.9rem; margin-bottom: 1.4rem; }
+  .card { background: var(--gris-oscuro); border: 1px solid var(--gris-borde); border-radius: 8px; padding: 1.1rem; transition: border-color 0.2s; }
+  .card:hover { border-color: rgba(0,200,81,0.25); }
+  .ci { font-size: 1.3rem; margin-bottom: 0.55rem; display: block; }
+  .card h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--blanco); }
+  .card p { font-size: 0.76rem; color: var(--blanco-dim); line-height: 1.65; }
+  .card p strong { color: var(--verde); font-weight: 600; }
+  .card p .w { color: var(--amarillo); }
+  .card p .d { color: #ff8080; }
+  hr { border: none; border-top: 1px solid var(--gris-borde); margin: 1.75rem 0; }
+  .sub { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: 0.04em; margin: 1.75rem 0 0.7rem; }
+  .notas { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 1.4rem; }
+  .notas li { background: var(--gris-oscuro); border: 1px solid var(--gris-borde); border-radius: 5px; padding: 0.65rem 0.85rem 0.65rem 1.15rem; font-size: 0.77rem; color: var(--blanco-dim); line-height: 1.6; position: relative; }
+  .notas li::before { content: '▸'; position: absolute; left: 0.6rem; color: var(--verde); font-size: 0.68rem; top: 0.78rem; }
+  .notas li strong { color: var(--blanco); }
+  .notas li .w { color: var(--amarillo); }
+  .notas li .d { color: #ff8080; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .nota-imp { background: rgba(255,214,10,0.06); border: 1px solid rgba(255,214,10,0.2); border-radius: 6px; padding: 0.9rem 1rem; margin-bottom: 1.4rem; font-size: 0.78rem; color: #fff0a0; line-height: 1.7; }
+  .nota-imp strong { display: block; font-size: 0.8rem; margin-bottom: 0.3rem; color: var(--amarillo); }
+  .rf11 { border-left: 3px solid var(--rojo) !important; }
+  .rf7  { border-left: 3px solid var(--verde) !important; }
+  .rf5  { border-left: 3px solid var(--amarillo) !important; }
+  .rvet { border-left: 3px solid var(--morado) !important; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: var(--negro); }
+  ::-webkit-scrollbar-thumb { background: var(--gris-borde); border-radius: 2px; }
+  @media(max-width:680px) {
+    .two { grid-template-columns: 1fr; }
+    h1 { font-size: 3rem; }
+    nav button { font-size: 0.58rem; padding: 0.28rem 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">RFFM</div>
+  <div class="logo-sep"></div>
+  <div class="logo-sub">Guía del Árbitro · Temporada 2025/2026</div>
+  <nav>
+    <button class="active" onclick="show('resumen',this)">Resumen</button>
+    <button onclick="show('f11',this)">Fútbol 11</button>
+    <button onclick="show('f7',this)">Fútbol 7 / F5</button>
+    <button onclick="show('veteranos',this)">Veteranos</button>
+    <button onclick="show('fuera',this)">Fuera de Juego</button>
+    <button onclick="show('disciplina',this)">Disciplina</button>
+    <button onclick="show('balones',this)">Balones y Campo</button>
+    <button onclick="show('normas',this)">Normas Generales</button>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-eye">Real Federación de Fútbol de Madrid</div>
+  <h1>GUÍA<br><span class="acc">ÁRBITRO</span></h1>
+  <p class="hero-desc">Referencia oficial para árbitros basada en las Normas de Competición aprobadas el 10 de julio de 2025.</p>
+  <div class="badges">
+    <span class="badge bg">✓ Temporada 2025/2026</span>
+    <span class="badge by">⚡ Aprobado 10 Jul 2025</span>
+    <span class="badge br">Basado en normativa oficial RFFM</span>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══════════════════════ RESUMEN ══════════════════════ -->
+<div class="section active" id="sec-resumen">
+  <div class="sh"><h2>Resumen General</h2><p>Vista rápida · Duración · Sustituciones · Fuera de juego · Tarjetas · Todas las categorías</p></div>
+
+  <div class="sub">⬛ Fútbol 11</div>
+  <div class="alert ab">
+    <strong>Mínimo 7 jugadores PROPIOS DE LA CATEGORÍA para empezar y continuar el partido</strong>
+    Si ambos equipos sustituyen en la misma parada, cuenta como interrupción para cada uno. Las sustituciones efectuadas en el descanso NO cuentan como parada o ventana.
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Tiempos</th><th>Descanso</th><th>Sust. máx.</th><th>Paradas tot.</th><th>Paradas 2ªP</th><th>Vuelve</th><th>F. Juego</th><th>Tarjetas</th></tr></thead>
+    <tbody>
+      <tr class="rf11"><td class="s">Aficionado (M y F)</td><td class="c">2×45</td><td class="c">Máx. 15 min</td><td class="c">7</td><td class="c">5</td><td class="c">3 máx.</td><td class="c"><span class="pill pr">✗ No</span></td><td><span class="pill pg">✓ IFAB</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rf11"><td class="s">Juvenil (M y F)</td><td class="c">2×45</td><td class="c">Máx. 15 min</td><td class="c">7</td><td class="c">4</td><td class="c">3 máx.</td><td class="c"><span class="pill pr">✗ No</span></td><td><span class="pill pg">✓ IFAB</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rf11"><td class="s">Cadete (M y F)</td><td class="c">2×40</td><td class="c">Máx. 15 min</td><td class="c">7</td><td class="c">4</td><td class="c">3 máx.</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ IFAB</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rf11"><td class="s">Infantil F11 (M y F)</td><td class="c">2×35</td><td class="c">Máx. 15 min</td><td class="c">7</td><td class="c">4</td><td class="c">3 máx.</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ IFAB</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rf11"><td class="s">Alevín F11 (M y F)</td><td class="c">2×30</td><td class="c">Máx. 15 min</td><td class="c">7</td><td class="c">4</td><td class="c">3 máx.</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ IFAB</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sub">🟢 Fútbol 7 y Fútbol 5</div>
+  <div class="alert ag">
+    <strong>Mínimo 5 jugadores PROPIOS DE LA CATEGORÍA para iniciar y continuar el partido · Sustituciones libres en todas las categorías</strong>
+    Los jugadores sustituidos SÍ pueden volver. Nuevos jugadores solo pueden incorporarse hasta el final del descanso (cuando el árbitro sale al terreno de juego).
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Tiempos</th><th>Descanso</th><th>Sustituciones</th><th>Paradas</th><th>Vuelve</th><th>Fuera de Juego</th><th>Tarjetas</th></tr></thead>
+    <tbody>
+      <tr class="rf7"><td class="s">Aficionado Masc. y Fem. F7</td><td class="c">2×30</td><td class="c">Máx. 10 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ Línea 13 m</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rf7"><td class="s">Infantil Femenino F7</td><td class="c">2×30</td><td class="c">Máx. 10 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ Línea 13 m</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rf7"><td class="s">Alevín F7 (Mixto y Fem.)</td><td class="c">2×30</td><td class="c">Máx. 10 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ Línea 13 m</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rf7"><td class="s">Benjamín F7 Mixto</td><td class="c">2×25</td><td class="c">Máx. 5 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ Línea 13 m</span></td><td class="c"><span class="pill pr">✗ No *</span></td></tr>
+      <tr class="rf7" style="background:#0a1a0a"><td class="s">Benjamín Femenino F7 ⚡</td><td class="c"><span class="pill py">4×12 min</span></td><td class="c">Máx. 5 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ Línea 13 m</span></td><td class="c"><span class="pill pr">✗ No *</span></td></tr>
+      <tr class="rf7"><td class="s">Prebenjamín F7 Mixto</td><td class="c">2×20</td><td class="c">Máx. 5 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pr">✗ No existe</span></td><td class="c"><span class="pill pr">✗ No *</span></td></tr>
+      <tr class="rf5"><td class="s">Debutante F5 Mixto</td><td class="c">2×15</td><td class="c">Máx. 5 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pr">✗ No existe</span></td><td class="c"><span class="pill pr">✗ No *</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="nota-imp">
+    <strong>* Benjamín, Prebenjamín y Debutante — Sin tarjetas por reglas de juego, pero SÍ hay disciplina</strong>
+    No se muestran tarjetas por infracciones. Sin embargo, el árbitro SÍ puede expulsar por acción disciplinaria (sin mostrar tarjeta). Para faltas de gravedad superior a lo normal: <strong>expulsión temporal de 2 minutos</strong>. Por reincidencia o conducta violenta/injuriosa grave: <strong>expulsión definitiva</strong>. En Benjamín Femenino, el ganador de <strong>cada cuarto se anota independientemente</strong> de los goles totales del partido.
+  </div>
+
+  <div class="sub">🟣 Veteranos</div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Tiempos</th><th>Descanso</th><th>Sust. máx.</th><th>Paradas tot.</th><th>Paradas 2ªP</th><th>Vuelve</th><th>F. Juego</th><th>Tarjetas</th></tr></thead>
+    <tbody>
+      <tr class="rvet"><td class="s">Veterano Masculino F11</td><td class="c">2×40</td><td class="c">Máx. 15 min</td><td class="c">9</td><td class="c">5</td><td class="c">3 máx.</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ IFAB</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+      <tr class="rvet"><td class="s">Veterano Masculino F7</td><td class="c">2×30</td><td class="c">Máx. 10 min</td><td class="c">Libres</td><td class="c">Libres</td><td class="c">—</td><td class="c"><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ Línea 13 m</span></td><td class="c"><span class="pill pg">✓ Sí</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="alert ay">
+    <strong>⚠ Veteranos F11 — Regla especial de sustituciones</strong>
+    Los jugadores sustituidos SÍ pueden volver al campo mediante una nueva sustitución, respetando el nº de paradas disponibles. El descanso entre partes NO cuenta como interrupción. Edad mínima: 35 años cumplidos (nacidos antes del 01-01-1992).
+  </div>
+</div>
+
+<!-- ══════════════════════ FÚTBOL 11 ══════════════════════ -->
+<div class="section" id="sec-f11">
+  <div class="sh"><h2>Fútbol 11 — Detalle</h2><p>Aficionado · Juvenil · Cadete · Infantil · Alevín F11</p></div>
+
+  <div class="alert ar">
+    <strong>🛑 Mínimo 7 jugadores PROPIOS DE LA CATEGORÍA para empezar y durante todo el partido</strong>
+    Si un equipo queda con menos de 7 por cualquier causa (expulsión, lesión…), el árbitro suspende el partido. Resultado: 3-0 a favor del rival, salvo que éste tenga un marcador más favorable en el momento de la suspensión.
+  </div>
+
+  <div class="sub">Sustituciones por categoría</div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Sust. máx.</th><th>Paradas máx.</th><th>Paradas máx. 2ª parte</th><th>Sustituido puede volver</th><th>Descanso cuenta</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Aficionado (M y F)</td><td class="c">7</td><td class="c">5</td><td class="c">3</td><td class="c"><span class="pill pr">✗ No</span></td><td class="c"><span class="pill pr">✗ No cuenta</span></td></tr>
+      <tr><td class="s">Juvenil (M y F)</td><td class="c">7</td><td class="c">4</td><td class="c">3</td><td class="c"><span class="pill pr">✗ No</span></td><td class="c"><span class="pill pr">✗ No cuenta</span></td></tr>
+      <tr><td class="s">Cadete (M y F)</td><td class="c">7</td><td class="c">4</td><td class="c">3</td><td class="c"><span class="pill pg">✓ Sí</span></td><td class="c"><span class="pill pr">✗ No cuenta</span></td></tr>
+      <tr><td class="s">Infantil F11 (M y F)</td><td class="c">7</td><td class="c">4</td><td class="c">3</td><td class="c"><span class="pill pg">✓ Sí</span></td><td class="c"><span class="pill pr">✗ No cuenta</span></td></tr>
+      <tr><td class="s">Alevín F11 (M y F)</td><td class="c">7</td><td class="c">4</td><td class="c">3</td><td class="c"><span class="pill pg">✓ Sí</span></td><td class="c"><span class="pill pr">✗ No cuenta</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="cards">
+    <div class="card"><span class="ci">🔄</span><h3>Procedimiento de sustitución</h3><p>El delegado o capitán (en su ausencia) solicita la sustitución. Solo con el juego detenido. El sustituido sale por la <strong>línea más cercana a su posición</strong>. El suplente entra por <strong>la línea media</strong>. La sustitución es efectiva con la entrada del suplente.</p></div>
+    <div class="card"><span class="ci">⚠️</span><h3>Parada compartida</h3><p>Si un equipo aprovecha la parada del rival para también sustituir, esa parada <strong>cuenta para ambos equipos</strong>, aunque el segundo no la hubiese solicitado. Las sustituciones del descanso no cuentan.</p></div>
+    <div class="card"><span class="ci">🚫</span><h3>Expulsado no puede ser sustituido</h3><p>En <strong class="d">ninguna categoría</strong> puede sustituirse a un jugador expulsado por el árbitro.</p></div>
+    <div class="card"><span class="ci">🏃</span><h3>Calentamiento durante el partido</h3><p>Máximo <strong>5 futbolistas por equipo</strong> simultáneamente en las bandas, acompañados si procede por el preparador físico.</p></div>
+  </div>
+
+  <div class="alert ab">
+    <strong>Árbitros asistentes — Cuando sea posible</strong>
+    1ª División Autonómica de Aficionados (M y F) · Preferente de Aficionados masculino · 1ª División Autonómica de Juveniles · Superliga Cadete.
+  </div>
+
+  <div class="sub">Edades y balones — Fútbol 11</div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Código licencia</th><th>Nacidos/as</th><th>Balón</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Aficionado</td><td class="c"><span class="pill pgr">A / FA</span></td><td>Antes del 01-01-2007</td><td class="c">Talla 5</td></tr>
+      <tr><td class="s">Juvenil</td><td class="c"><span class="pill pgr">J / FJ</span></td><td>01-01-2007 – 31-12-2009</td><td class="c">Talla 5</td></tr>
+      <tr><td class="s">Cadete</td><td class="c"><span class="pill pgr">C / FC</span></td><td>01-01-2010 – 31-12-2011</td><td class="c">Talla 5</td></tr>
+      <tr><td class="s">Infantil masculino F11</td><td class="c"><span class="pill pgr">I</span></td><td>01-01-2012 – 31-12-2013</td><td class="c">Talla 5</td></tr>
+      <tr><td class="s">Infantil femenino F11</td><td class="c"><span class="pill pgr">I</span></td><td>01-01-2012 – 31-12-2013</td><td class="c">Talla 4</td></tr>
+      <tr><td class="s">Alevín F11 (M y F)</td><td class="c"><span class="pill pgr">AL / FAL</span></td><td>01-01-2014 – 31-12-2015</td><td class="c">Talla 4</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- ══════════════════════ FÚTBOL 7 ══════════════════════ -->
+<div class="section" id="sec-f7">
+  <div class="sh"><h2>Fútbol 7 y Fútbol 5 — Detalle</h2><p>Alevín · Benjamín · Prebenjamín · Debutante · Aficionado F7 · Infantil Femenino F7</p></div>
+
+  <div class="alert ag">
+    <strong>🟢 Mínimo 5 jugadores PROPIOS DE CATEGORÍA para iniciar y continuar el partido</strong>
+    Si el equipo queda con menos de 4 jugadores propios, el árbitro suspende y el resultado es 3-0 para el rival (o el más favorable si ya existía). En el fútbol formativo: si hay menos de 5 en el terreno incluidas expulsiones temporales, el árbitro da por finalizado el encuentro y lo hace constar en el acta.
+  </div>
+
+  <div class="sub">Características por categoría</div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Tiempos</th><th>Balón</th><th>Edades</th><th>Descanso (Sede)</th><th>Descanso (Loc-Vis)</th><th>Mixto</th></tr></thead>
+    <tbody>
+      <tr class="rf7"><td class="s">Aficionado Masculino F7</td><td class="c">2×30</td><td class="c">Talla 5</td><td>Antes 01-01-2007</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c">—</td></tr>
+      <tr class="rf7"><td class="s">Aficionado Femenino F7</td><td class="c">2×30</td><td class="c">Talla 5</td><td>Antes 01-01-2007</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c">—</td></tr>
+      <tr class="rf7"><td class="s">Infantil Femenino F7</td><td class="c">2×30</td><td class="c">Talla 4</td><td>01-01-2012 – 31-12-2013</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c">—</td></tr>
+      <tr class="rf7"><td class="s">Alevín F7 Mixto</td><td class="c">2×30</td><td class="c">Talla 4</td><td>01-01-2014 – 31-12-2015</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c"><span class="pill pg">✓</span></td></tr>
+      <tr class="rf7"><td class="s">Alevín Femenino F7</td><td class="c">2×30</td><td class="c">Talla 4</td><td>01-01-2014 – 31-12-2015</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c">—</td></tr>
+      <tr class="rf7"><td class="s">Benjamín F7 Mixto</td><td class="c">2×25</td><td class="c">Talla 4</td><td>01-01-2016 – 31-12-2017</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c"><span class="pill pg">✓</span></td></tr>
+      <tr class="rf7" style="background:#0a1a0a"><td class="s">Benjamín Fem. F7 ⚡</td><td class="c"><span class="pill py">4×12 min</span></td><td class="c">Talla 4</td><td>01-01-2016 – 31-12-2017</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c">—</td></tr>
+      <tr class="rf7"><td class="s">Prebenjamín F7 Mixto</td><td class="c">2×20</td><td class="c">Talla 3</td><td>01-01-2018 – 31-12-2019</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c"><span class="pill pg">✓</span></td></tr>
+      <tr class="rf5"><td class="s">Debutante F5 Mixto</td><td class="c">2×15</td><td class="c">Talla 3</td><td>01-01-2020 – 31-12-2021</td><td class="c">Máx. 5 min</td><td class="c">Máx. 10 min</td><td class="c"><span class="pill pg">✓</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="nota-imp">
+    <strong>⚡ Benjamín Femenino F7 — Formato especial de 4 tiempos</strong>
+    Duración total: 48 minutos divididos en 4 periodos de 12 minutos cada uno. El ganador de cada cuarto se anota independientemente de los goles totales.
+  </div>
+
+  <div class="sub">Reglas específicas Fútbol 7</div>
+  <div class="cards">
+    <div class="card"><span class="ci">👥</span><h3>Inicio del partido</h3><p>Cada equipo puede comenzar con <strong>mínimo 5 jugadores</strong>. Los restantes pueden incorporarse hasta el <strong>final del descanso</strong> (cuando el árbitro sale al terreno). No se pueden incorporar nuevos jugadores en la segunda parte.</p></div>
+    <div class="card"><span class="ci">🔄</span><h3>Sustituciones libres</h3><p>Sin límite de sustituciones ni de interrupciones. Los jugadores sustituidos <strong>SÍ pueden volver</strong> cuantas veces sea necesario, siempre por la zona habilitada (línea media) con autorización del árbitro o delegado arbitral.</p></div>
+    <div class="card"><span class="ci">📢</span><h3>Saque inicial — Gol inválido</h3><p>No es válido el gol conseguido de <strong class="d">saque directo de centro</strong>. Tras marcarse un gol, el saque lo realiza el equipo que encajó.</p></div>
+    <div class="card"><span class="ci">🥅</span><h3>Saque de meta</h3><p>Balón en cualquier punto del área de meta. <strong class="d">NO es válido el gol de saque de meta directo.</strong> En Debutante y Prebenjamín, el saque puede realizarse desde cualquier punto del área de penalti.</p></div>
+    <div class="card"><span class="ci">🚩</span><h3>Saque de banda</h3><p>Con manos, por encima de la cabeza, frente al campo, un pie sobre o al exterior de la línea. <strong class="d">No puede marcarse gol directamente de saque de banda.</strong></p></div>
+    <div class="card"><span class="ci">📐</span><h3>Tiros libres — Campo propio</h3><p>Desde campo propio, <strong>TODOS los tiros libres son INDIRECTOS</strong> sin excepción. No puede marcarse gol directo desde el propio campo.</p></div>
+    <div class="card"><span class="ci">⚽</span><h3>Saque de esquina</h3><p><strong>SÍ puede anotarse gol directamente</strong> de saque de esquina. Los rivales a mínimo 6 m. El lanzador no puede volver a jugar el balón hasta que lo toque otro.</p></div>
+    <div class="card"><span class="ci">🎯</span><h3>Penalti</h3><p>Desde el punto de penalti (9 m de la línea de meta). Todos excepto lanzador y portero fuera de la zona de 13 m. El portero debe tener al menos un pie en la línea de meta al momento del lanzamiento.</p></div>
+  </div>
+
+  <div class="alert ar">
+    <strong>🚫 Alevín F7 — Prohibición terminante</strong>
+    Está totalmente prohibido alinear futbolistas con licencia de Fútbol 11 en equipos del mismo club que participen en la modalidad de Fútbol 7. Es una infracción grave que el árbitro debe reflejar si la detecta.
+  </div>
+</div>
+
+<!-- ══════════════════════ VETERANOS ══════════════════════ -->
+<div class="section" id="sec-veteranos">
+  <div class="sh"><h2>Veteranos</h2><p>Liga Veteranos Fútbol 11 Masculino · Temporada 2025/2026</p></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Aspecto</th><th>Veterano F11</th><th>Veterano F7</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Duración</td><td>2×40 min (80 min)</td><td>2×30 min (60 min)</td></tr>
+      <tr><td class="s">Balón</td><td>Talla 5</td><td>Talla 5</td></tr>
+      <tr><td class="s">Edad mínima</td><td colspan="2">35 años · Licencia "V" · Nacidos antes del 01-01-1992</td></tr>
+      <tr><td class="s">Licencias máx.</td><td>30 futbolistas</td><td>—</td></tr>
+      <tr><td class="s">Sustituciones</td><td>Máx. 9 · Máx. 5 paradas · Máx. 3 en 2ª parte</td><td>Libres (según bases específicas)</td></tr>
+      <tr><td class="s">Sustituido puede volver</td><td><span class="pill pg">✓ Sí (con nueva sustitución)</span></td><td><span class="pill pg">✓ Sí</span></td></tr>
+      <tr><td class="s">Descanso cuenta como parada</td><td><span class="pill pr">✗ No</span></td><td><span class="pill pr">✗ No</span></td></tr>
+      <tr><td class="s">Fuera de juego</td><td>Sí — Reglas IFAB</td><td>Sí — Línea 13 m</td></tr>
+      <tr><td class="s">Mínimo inicio/continuar</td><td>7 jugadores</td><td>5 jugadores</td></tr>
+      <tr><td class="s">Tarjetas</td><td><span class="pill pg">✓ Sí</span></td><td><span class="pill pg">✓ Sí</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="alert ab">
+    <strong>Compatibilidad de licencias en Veteranos</strong>
+    Los futbolistas mayores de 35 años con Licencia de Aficionados pueden participar en el equipo de Veteranos del mismo club. Del mismo modo, los futbolistas con Licencia de Veteranos pueden participar en los equipos de Aficionados del mismo club.
+  </div>
+
+  <div class="sub">Equipos inscritos — Liga Veteranos F11 2025/2026</div>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Club</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td>AD Sporting Hortaleza</td></tr>
+      <tr><td class="c">2</td><td>AD Esperanza</td></tr>
+      <tr><td class="c">3</td><td>AD Orcasitas</td></tr>
+      <tr><td class="c">4</td><td>FC Zarzaquemada</td></tr>
+      <tr><td class="c">5</td><td>CF Inter de Valdemoro</td></tr>
+      <tr><td class="c">6</td><td>AD Escuela de Fútbol Carabanchel</td></tr>
+      <tr><td class="c">7</td><td>CD Goya</td></tr>
+      <tr><td class="c">8</td><td>ADC San Fermín</td></tr>
+      <tr><td class="c">9</td><td>CDE Aupa</td></tr>
+      <tr><td class="c">10</td><td>CDE Martinos</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="alert ay">
+    <strong>📅 Calendario Liga Veteranos F11</strong>
+    Del 19 de octubre de 2025 al 7 de junio de 2026. Sistema de liga a 2 vueltas · 1 único grupo · 3 puntos victoria · 1 empate · 0 derrota.
+  </div>
+</div>
+
+<!-- ══════════════════════ FUERA DE JUEGO ══════════════════════ -->
+<div class="section" id="sec-fuera">
+  <div class="sh"><h2>Fuera de Juego</h2><p>Normativa específica RFFM · En F11 aplican las Reglas IFAB estándar</p></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>¿Existe?</th><th>Tipo / Referencia</th><th>Sanción</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Fútbol 11 — Todas las categorías</td><td><span class="pill pg">✓ Sí</span></td><td>Reglas IFAB estándar (desde línea de centro)</td><td>Tiro libre indirecto</td></tr>
+      <tr><td class="s">Aficionado F7 (M y F)</td><td><span class="pill pg">✓ Sí</span></td><td>Desde línea de 13 metros</td><td>Tiro libre indirecto</td></tr>
+      <tr><td class="s">Infantil Femenino F7</td><td><span class="pill pg">✓ Sí</span></td><td>Desde línea de 13 metros</td><td>Tiro libre indirecto</td></tr>
+      <tr><td class="s">Alevín F7 (M y F)</td><td><span class="pill pg">✓ Sí</span></td><td>Desde línea de 13 metros</td><td>Tiro libre indirecto</td></tr>
+      <tr><td class="s">Benjamín F7 (M y F)</td><td><span class="pill pg">✓ Sí</span></td><td>Desde línea de 13 metros</td><td>Tiro libre indirecto</td></tr>
+      <tr><td class="s">Prebenjamín F7</td><td><span class="pill pr">✗ No existe</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Debutante F5</td><td><span class="pill pr">✗ No existe</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Veterano F11</td><td><span class="pill pg">✓ Sí</span></td><td>Reglas IFAB estándar</td><td>Tiro libre indirecto</td></tr>
+      <tr><td class="s">Veterano F7</td><td><span class="pill pg">✓ Sí</span></td><td>Desde línea de 13 metros</td><td>Tiro libre indirecto</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sub">Reglas de Fuera de Juego en Fútbol 7</div>
+  <div class="cards">
+    <div class="card"><span class="ci">📍</span><h3>Condición</h3><p>El jugador debe estar <strong>dentro de la línea de 13 metros</strong> del adversario Y más cerca de la línea de meta contraria que el balón, salvo que haya <strong>al menos 2 adversarios</strong> entre él y la línea de meta.</p></div>
+    <div class="card"><span class="ci">⚡</span><h3>Cuándo se sanciona</h3><p>Solo si en el momento en que toca el balón o lo juega un compañero, el árbitro considera que está <strong>interfiriendo el juego o sacando ventaja</strong> de esa posición.</p></div>
+    <div class="card"><span class="ci">↩️</span><h3>Viene de posición ilegal</h3><p>Un jugador puede ser sancionado aunque no esté en F.J. en ese momento, si <strong>vino de esa posición y se aprovecha de ello</strong> para sacar ventaja.</p></div>
+    <div class="card"><span class="ci">✅</span><h3>NO es F.J. cuando...</h3><p>El jugador recibe de un <strong>saque de meta</strong>, de un <strong>saque de banda</strong> o de un <strong>bote neutral</strong>. En estas situaciones no puede haber fuera de juego.</p></div>
+  </div>
+
+  <div class="alert ay">
+    <strong>⚠ Zona de fuera de juego F7 — Línea a 13 metros de la meta</strong>
+    A 13 metros de cada línea de meta se traza una línea paralela que une las dos bandas. Solo puede producirse fuera de juego si el atacante está dentro de esa zona en el momento del pase.
+  </div>
+</div>
+
+<!-- ══════════════════════ DISCIPLINA ══════════════════════ -->
+<div class="section" id="sec-disciplina">
+  <div class="sh"><h2>Disciplina y Tarjetas</h2><p>Tarjetas · Expulsiones · Ciclo de amonestaciones · Banquillo</p></div>
+
+  <div class="sub">Tarjetas por categoría</div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Tarjeta Amarilla</th><th>Tarjeta Roja</th><th>Expulsión temporal (2 min)</th><th>Expulsión definitiva sin tarjeta</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Aficionado F11 (M y F)</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Juvenil (M y F)</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Cadete (M y F)</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Infantil F11 (M y F)</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Alevín F11 y F7 (M y F)</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Infantil Femenino F7</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Aficionado F7 (M y F)</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Veterano (F11 y F7)</td><td><span class="pill py">✓ Sí</span></td><td><span class="pill pr">✓ Sí</span></td><td>—</td><td>—</td></tr>
+      <tr><td class="s">Benjamín F7</td><td><span class="pill pr">✗ No</span></td><td><span class="pill pr">✗ No</span></td><td><span class="pill py">✓ Si falta grave</span></td><td><span class="pill pr">✓ Reincidencia/violencia</span></td></tr>
+      <tr><td class="s">Prebenjamín F7</td><td><span class="pill pr">✗ No</span></td><td><span class="pill pr">✗ No</span></td><td><span class="pill py">✓ Si falta grave</span></td><td><span class="pill pr">✓ Reincidencia/violencia</span></td></tr>
+      <tr><td class="s">Debutante F5</td><td><span class="pill pr">✗ No</span></td><td><span class="pill pr">✗ No</span></td><td><span class="pill py">✓ Si falta grave</span></td><td><span class="pill pr">✓ Reincidencia/violencia</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="nota-imp">
+    <strong>Categorías sin tarjetas — Cómo actuar como árbitro</strong>
+    En Benjamín, Prebenjamín y Debutante NO se muestran tarjetas por infracciones al reglamento. Sin embargo, el árbitro SÍ puede:<br>
+    • <strong>Expulsar temporalmente (1 ó 2 minutos)</strong> por conducta incorrecta leve.<br>
+    • <strong>Expulsar definitivamente</strong> por reincidencia o conducta violenta, injuriosa o juego brusco grave (sin mostrar tarjeta).<br>
+    En ambos casos, se comunica el nombre del jugador al Órgano Disciplinario competente en los plazos reglamentarios.
+  </div>
+
+  <div class="sub">Ciclo de amonestaciones</div>
+  <div class="alert ay">
+    <strong>⚠ 5 tarjetas amarillas = 1 partido de suspensión</strong>
+    En las fases regulares, la acumulación de 5 amonestaciones en la misma temporada y competición determina la suspensión por 1 partido, con la sanción económica accesoria establecida en el Reglamento Disciplinario y Competicional de la RFFM. Las amonestaciones económicas en categorías Juvenil y Aficionado: 1 € por cada tarjeta amarilla exhibida.
+  </div>
+
+  <div class="sub">Suspensión del partido</div>
+  <div class="two">
+    <div class="alert ar" style="margin-bottom:0">
+      <strong>Fútbol 11 — Menos de 7 jugadores propios</strong>
+      El árbitro suspende el partido. Resultado: 3-0 a favor del rival (o el marcador más favorable si ya lo había).
+    </div>
+    <div class="alert ar" style="margin-bottom:0">
+      <strong>Fútbol 7 — Menos de 4 jugadores propios / menos de 5 en terreno</strong>
+      Con menos de 4 propios → árbitro suspende, resultado 3-0. En categorías formativas, si quedan menos de 5 jugadores en el terreno (incluyendo expulsiones temporales), árbitro da por finalizado y lo hace constar en el acta.
+    </div>
+  </div>
+
+  <div class="sub" style="margin-top:1.5rem">Banquillo — Normas para el árbitro</div>
+  <ul class="notas">
+    <li>Máximo <strong>15 personas</strong>: 7 futbolistas suplentes + máx. 8 oficiales.</li>
+    <li>Obligatorio: al menos <strong>1 Entrenador Titular (ET)</strong> o en Prácticas (EPR) + <strong>1 Delegado (D)</strong> con licencia o autorización RFFM. El resto puede ser: AT, EP, M, PF, ATS, FTP, EM, CTC. +1 plaza adicional para titular de Licencia de Mentor (LM).</li>
+    <li><strong class="d">Prohibido fumar en el banquillo</strong> durante el partido. El árbitro amonestar al infractor, independientemente de su cargo.</li>
+    <li>Los delegados entregan licencias al árbitro <strong>mínimo 25 minutos antes</strong> del inicio: titulares, suplentes y personas del banquillo.</li>
+    <li>En <strong>Fútbol 7</strong>: el equipo debe llegar al campo con antelación <strong>mínima de 30 minutos</strong>. En el resto: <strong>45 minutos</strong>.</li>
+    <li>Si <strong>no hay ningún oficial con ficha</strong> presente, el partido no puede celebrarse y debe ser suspendido. No vale DNI ni documento sustitutivo.</li>
+    <li>Si no hay delegado, puede hacer sus veces el capitán <strong>solo si tiene más de 16 años</strong>. Un capitán menor de 16 años NO puede actuar de delegado.</li>
+  </ul>
+
+  <div class="sub">Faltas en Fútbol 7 — Tiro libre directo vs. indirecto</div>
+  <div class="two">
+    <div class="card">
+      <h3>🟡 Tiro libre DIRECTO (desde campo contrario)</h3>
+      <p style="margin-top:0.5rem; font-size:0.77rem; color:var(--blanco-dim); line-height:1.65">Dar o intentar dar una patada · Poner zancadilla · Saltar sobre adversario · Cargar violenta o peligrosamente · Golpear o intentarlo · Sujetar o empujar · Jugar con la mano (salvo portero en su área).<br><br>
+      <strong>Las mismas faltas dentro del área → PENALTI</strong><br><br>
+      <span class="d">⚠ Desde campo propio: tiro libre directo NO puede marcar gol directo (se ejecuta como indirecto).</span></p>
+    </div>
+    <div class="card">
+      <h3>⚪ Tiro libre INDIRECTO</h3>
+      <p style="margin-top:0.5rem; font-size:0.77rem; color:var(--blanco-dim); line-height:1.65">Juego peligroso · Obstaculizar avance · Impedir al portero sacar con manos · Portero controla, juega y vuelve a coger con manos · Portero recibe pase de pie de compañero · Portero recibe de saque de banda · Cualquier otra infracción que motiva amonestación o expulsión.<br><br>
+      <strong>En campo propio, TODOS los tiros libres son indirectos sin excepción.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ BALONES Y CAMPO ══════════════════════ -->
+<div class="section" id="sec-balones">
+  <div class="sh"><h2>Balones Oficiales y Campo</h2><p>Temporada 2025/2026 — Marca KROMEX · Modelo Karma · El club organizador pone mínimo 3 balones a disposición del árbitro</p></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>Talla</th><th>Circunferencia</th><th>Peso</th><th>Categorías</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Talla 3</td><td>57,5 – 60,5 cm</td><td>285 – 315 g</td><td>Prebenjamín F7 · Debutante F5</td></tr>
+      <tr><td class="s">Talla 4</td><td>63,5 – 66 cm</td><td>350 – 390 g</td><td>Benjamín F7 (M y F) · Alevín F7 y F11 (M y F) · Infantil Femenino F7 y F11</td></tr>
+      <tr><td class="s">Talla 5</td><td>68 – 70 cm</td><td>410 – 450 g</td><td>Aficionado F7 y F11 (M y F) · Infantil Masculino F11 · Cadete · Juvenil · Veterano</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="alert ar"><strong>✗ Sanción por no usar balón oficial KROMEX</strong>Aficionados: 50 € / partido · Resto: 30 € / partido. Reincidencia: sanción equiparable a incomparecencia según categoría.</div>
+
+  <div class="sub">Dimensiones del Campo — Fútbol 7</div>
+  <div class="tw"><table>
+    <thead><tr><th>Elemento</th><th>Medida</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Longitud</td><td>40 – 60 m (o igual al ancho de un campo F11)</td></tr>
+      <tr><td class="s">Anchura</td><td>30 – 40 m (longitud siempre mayor que anchura)</td></tr>
+      <tr><td class="s">Ancho de líneas</td><td>8 cm</td></tr>
+      <tr><td class="s">Radio círculo central</td><td>6 m</td></tr>
+      <tr><td class="s">Portería — ancho interior</td><td>6 m entre postes</td></tr>
+      <tr><td class="s">Portería — alto del larguero</td><td>2 m del suelo</td></tr>
+      <tr><td class="s">Diámetro de postes y larguero</td><td>8 cm</td></tr>
+      <tr><td class="s">Área de meta</td><td>3 m desde cada poste · 4,30 m de profundidad</td></tr>
+      <tr><td class="s">Área de penalti</td><td>9 m desde cada poste · 11 m de profundidad</td></tr>
+      <tr><td class="s">Punto de penalti</td><td>9 m de la línea de meta</td></tr>
+      <tr><td class="s">Zona de fuera de juego</td><td>Línea paralela a 13 m de cada línea de meta</td></tr>
+      <tr><td class="s">Arco de esquina</td><td>Radio 60 cm</td></tr>
+      <tr><td class="s">Distancia mínima rivales (tiro libre / saque inicial / esquina)</td><td>6 m</td></tr>
+      <tr><td class="s">Distancia rivales en penalti</td><td>Fuera de la zona de 13 m (salvo portero y lanzador)</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sub">Calzado en Hierba Artificial</div>
+  <ul class="notas">
+    <li><strong>Válidos:</strong> Tacos tipo AG · MF · MG · TF · TURF o similares (altura menor de 1 cm · mínimo 4 tacos en los talones).</li>
+    <li><strong class="d">No válidos:</strong> FG y SG (hierba natural) · HG (tierra/superficies duras) · Taco de aluminio o similar.</li>
+  </ul>
+
+  <div class="alert ab"><strong>Gafas y lentes correctoras</strong>Solo se permite su uso con autorización escrita de la RFFM, previa presentación al árbitro antes del inicio. Para protecciones blandas, basta con informe médico presentado al árbitro.</div>
+</div>
+
+<!-- ══════════════════════ NORMAS GENERALES ══════════════════════ -->
+<div class="section" id="sec-normas">
+  <div class="sh"><h2>Normas Generales</h2><p>Jornada · Horarios · Árbitro · Puntuación · Uniformidad</p></div>
+
+  <div class="sub">Sistema de Puntuación</div>
+  <div class="cards" style="grid-template-columns:repeat(3,1fr); max-width:480px">
+    <div class="card" style="text-align:center"><span class="ci">🏆</span><h3 style="font-size:1.8rem; color:var(--verde)">3 pts</h3><p>Victoria</p></div>
+    <div class="card" style="text-align:center"><span class="ci">🤝</span><h3 style="font-size:1.8rem; color:var(--amarillo)">1 pt</h3><p>Empate</p></div>
+    <div class="card" style="text-align:center"><span class="ci">❌</span><h3 style="font-size:1.8rem; color:var(--gris-texto)">0 pts</h3><p>Derrota</p></div>
+  </div>
+
+  <div class="sub">Horarios oficiales 2025/2026</div>
+  <div class="tw"><table>
+    <thead><tr><th>Categoría</th><th>Sábados</th><th>Domingos</th><th>Observación</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Aficionado Masculino F11</td><td>—</td><td>09:00 – 21:00 h</td><td>Si visitante &gt;25 km, programar desde 10:00 h</td></tr>
+      <tr><td class="s">Aficionado Femenino F11 y F7</td><td>14:15 – 20:30 h (no festivos)</td><td>09:00 – 21:00 h</td><td>Sábado festivo: mismo horario que domingo</td></tr>
+      <tr><td class="s">Juvenil Masculino</td><td>14:15 – 21:00 h (no festivos)</td><td>09:00 – 21:00 h</td><td>Liga Nacional Juvenil gr.12: desde 16:00 h sáb.</td></tr>
+      <tr><td class="s">Juvenil Femenino</td><td>09:00 – 21:00 h</td><td>09:00 – 21:00 h</td><td>Si visitante &gt;25 km, desde 10:00 h</td></tr>
+      <tr><td class="s">Cadete · Infantil · Alevín F11 · Alevín F7</td><td>09:00 – 20:00 h</td><td>09:00 – 20:00 h</td><td>Cadete: se permite hasta 20:30 h</td></tr>
+      <tr><td class="s">Benjamín · Prebenjamín · Debutante</td><td colspan="2" style="text-align:center">Formato Sede — Fija el Subcomité de Fútbol Formativo</td><td>Viernes tarde – Domingo 20:00 h</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sub">El Árbitro — Competencias</div>
+  <ul class="notas">
+    <li>Las competencias del árbitro comienzan al <strong>entrar al terreno de juego</strong> y finalizan al <strong>abandonar las instalaciones</strong>.</li>
+    <li>Puede sancionar durante <strong>suspensiones temporales</strong> y cuando el balón está fuera de juego.</li>
+    <li>Sus <strong>decisiones sobre el juego son definitivas</strong>. Aplica el principio de ventaja cuando el castigo beneficia al infractor.</li>
+    <li>Actúa de <strong>cronometrador</strong> y toma nota de todas las incidencias.</li>
+    <li>En fútbol formativo: <strong>fomenta el espíritu deportivo</strong>; puede explicar sus decisiones a los jugadores/as.</li>
+    <li>Si el árbitro no se presenta: el partido puede disputarse con árbitro acordado de mutuo acuerdo, rellenando un acta firmada por delegados y capitanes de ambos equipos <strong>antes del inicio</strong>. Se entrega a la RFFM en las 48 horas siguientes.</li>
+    <li>Incomparecencia del árbitro: los clubs notifican por escrito a la RFFM <strong>en las 48 horas siguientes</strong> a la suspensión.</li>
+  </ul>
+
+  <div class="sub">Uniformidad</div>
+  <ul class="notas">
+    <li>Los futbolistas visten el <strong>primer uniforme</strong> indicado en la hoja de inscripción. Dorsales del <strong>1 al 99</strong>.</li>
+    <li>Si los uniformes coinciden: <strong>cambia el equipo visitante</strong>. En campo neutral: el de afiliación federativa más moderna.</li>
+    <li>Excepción para evitar suspensión: puede bastar con cambiar solo las <strong>camisetas</strong>, pudiendo coincidir pantalón y medias (excepto Aficionados, 1ª Div. Aut. Juvenil y Preferente Juvenil).</li>
+    <li><strong>Espinilleras obligatorias</strong> en Aficionados, Juveniles y Cadetes. Recomendadas en el resto.</li>
+    <li>El color de las medias debe ser igual para todos, excepto el portero, que puede tener uniformidad diferente.</li>
+  </ul>
+
+  <div class="sub">Sanciones económicas — Referencia rápida</div>
+  <div class="tw"><table>
+    <thead><tr><th>Infracción del club</th><th>Categoría</th><th>Sanción</th></tr></thead>
+    <tbody>
+      <tr><td class="s">Incomparecencia</td><td>1ª Div. Autonómica Aficionados</td><td>500 €</td></tr>
+      <tr><td></td><td>Preferente Aficionados</td><td>250 €</td></tr>
+      <tr><td></td><td>1ª y 2ª Aficionados</td><td>175 €</td></tr>
+      <tr><td></td><td>Resto categorías</td><td>90 €</td></tr>
+      <tr><td class="s">No usar balón oficial</td><td>Aficionados</td><td>50 € / partido</td></tr>
+      <tr><td></td><td>Resto categorías</td><td>30 € / partido</td></tr>
+      <tr><td class="s">Alineación indebida (mala fe)</td><td>1ª Div. Autonómica</td><td>500 €</td></tr>
+      <tr><td></td><td>Preferente</td><td>250 €</td></tr>
+      <tr><td></td><td>Resto categorías</td><td>90 €</td></tr>
+      <tr><td class="s">Tarjeta amarilla (cat. Aficionado y Juvenil)</td><td>M y F</td><td>1 € / tarjeta</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+</div><!-- /page -->
+
+<footer style="text-align:center;padding:1.5rem;background:var(--gris-oscuro);border-top:1px solid var(--gris-borde);font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--gris-texto);letter-spacing:0.05em;">
+  RFFM · Normas de Competición aprobadas el 10 de julio de 2025 · Temporada 2025/2026 · Uso interno para árbitros
+</footer>
+
+<script>
+  function show(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('sec-' + id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
